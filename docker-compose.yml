@@ -32,7 +32,7 @@ services:
     admin:
         image: phpmyadmin/phpmyadmin:latest
         ports:
-          - 8001:80
+          - 9090:80
         environment:
           - PMA_ARBITRARY=1
         networks:
