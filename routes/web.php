@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
-
+//Login
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
-
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('loginPost');
+//Register
 Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'register'])->name('register');
+Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store'])->name('register');
+//Contact
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');

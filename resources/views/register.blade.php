@@ -1,14 +1,15 @@
 @extends('layouts.doctype')
 
-@section('title', 'Login')
+@section('title', 'Register')
 
 
 @section('content')
     
     <div class="center">
-        <form method="get">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username">
+        <form action="{{ route('register') }}" method="post">
+            @csrf
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name">
             <br>
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password">
@@ -17,7 +18,7 @@
             <input type="email" id="email" name="email">
             <br>
 
-            <input type="submit" value="login">
+            <input type="submit" value="register">
         </form>
     </div>
     <style>

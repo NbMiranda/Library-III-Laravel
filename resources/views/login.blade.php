@@ -6,20 +6,26 @@
 @section('content')
     
     <div class="center">
-        <form method="get">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
+        <form action="{{ route('loginPost') }}" method="post">
+            @csrf
+
+            @if (session('msg'))
+                <div class="alert alert-success">
+                    {{ session('msg') }}
+                </div>
+            @endif
+
+            <label for="email">Username:</label>
+            <input type="text" id="email" name="email">
             <br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
             <br>
-            <input type="submit" value="login">
+            <input type="submit" name="login" value="login">
         </form>
     </div>
     <style>
-        body {
-            background-color: #ffffff;
-        }
+
 
         .center {
             display: flex;
@@ -29,7 +35,7 @@
         }
 
         form {
-            background-color: #FFFFFF;
+            background-color: #fb101078;
             padding: 20px;
             border-radius: 10px;
         }

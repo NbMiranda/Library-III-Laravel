@@ -1,17 +1,17 @@
 <!-- Navbar -->
-<nav id="senna" class="navbar navbar-expand-lg navbar sticky-top bg-light" bg-light>
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#senna">
+<nav id="nav" class="navbar navbar-expand-lg navbar sticky-top bg-light" bg-light>
+    <div class="container-fluid" id="nav">
+        <a class="navbar-brand" href="#nav">
             <img src="{{ URL::asset('/imgs/redbook.png') }}" width="40" height="34">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Senna</a>
+                    <a class="nav-link" aria-current="page" href="/">Library</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Logar</a>
@@ -20,7 +20,7 @@
                     <a class="nav-link" href="{{ route('register') }}">Registrar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                 </li>
             </ul>
             {{-- User image dropdown --}}
@@ -44,7 +44,11 @@
 
 <style>
   #user_image{
-    background-color: white !important;
-    border: 1px solid #00000033;
+    background-color: #F5F5F5 !important;
+    border: none;
   }
+  #nav{
+    background-color:#F5F5F5 !important ;
+  }
+  
 </style>
