@@ -32,8 +32,9 @@
                         height="40">
                     </img>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="">Login</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="{{ route('home') }}"
+                            style="color: red">{{ auth()->user()->name }}</a></li>
+                        {{-- <li><a class="dropdown-item" href="#">Another action</a></li> --}}
                         <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
 
 
@@ -78,6 +79,6 @@
       border: none;
       color: #F5F5F5;
       font-weight: 400;
-      transition: .6s
+      transition: .4s
     }
 </style>
