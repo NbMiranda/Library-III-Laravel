@@ -30,9 +30,9 @@
                     <img src="{{ URL::asset('/imgs/redperson.png') }}" class="btn btn-secondary dropdown-toggle"
                         type="button" id="user_image" data-bs-toggle="dropdown" aria-expanded="false" width="52"
                         height="40">
-                    </img>
+                    
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('home') }}"
+                        <li><a class="dropdown-item" href="{{ route('myAccount') }}"
                             style="color: red">{{ auth()->user()->name }}</a></li>
                         {{-- <li><a class="dropdown-item" href="#">Another action</a></li> --}}
                         <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
@@ -47,11 +47,7 @@
 
             @endif
 
-
         </div>
-
-
-
     </div>
 </nav>
 

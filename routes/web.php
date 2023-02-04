@@ -23,8 +23,11 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('
 // Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store'])->name('register');
 //Contact
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
+
 Auth::routes();
 
 Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+route::get('/myAccount', [App\Http\Controllers\MyAccountController::class, 'myAccount'])->name('myAccount');
