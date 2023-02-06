@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav id="nav" class="navbar navbar-expand-lg navbar sticky-top bg-light" bg-light>
+<nav id="nav" class="container navbar navbar-expand-lg navbar sticky-top bg-light" bg-light>
     <div class="container-fluid" id="nav">
         <a class="navbar-brand" href="{{ route('index') }}">
             <img src="{{ URL::asset('/imgs/redbook.png') }}" width="40" height="34">
@@ -10,7 +10,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Library</a>
                 </li>
@@ -52,9 +52,11 @@
 </nav>
 
 <style>
+
     #user_image {
         background-color: #F5F5F5 !important;
         border: none;
+        margin-right: 2em;
     }
 
     #nav {
@@ -75,6 +77,6 @@
       border: none;
       color: #F5F5F5;
       font-weight: 400;
-      transition: .4s
+      transition: .3s
     }
 </style>

@@ -1,6 +1,21 @@
 body{
     background-color: #F5F5F5;
 }
+.red{
+    color: red;
+}
+#links{
+    color: red;
+    text-decoration: none;
+    transition: .5s;
+
+}
+#links:hover{
+    color: #c00000;
+    transition: .6s;
+    
+}
+
 #login{
     /* border: 1px solid red; */
     /* border-radius: 9px; */
@@ -43,4 +58,13 @@ body{
 .dropdown-menu{
     border: 1px solid red;
     background-color: #F5F5F5;
+}
+
+#icon{
+    color: red ;
+    border-color: red;
+}
+#icon:hover{
+    background-color: red;
+    color: #F5F5F5;
 }
