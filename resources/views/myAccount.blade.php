@@ -3,13 +3,16 @@
 @section('title', 'Minha conta')
     
 @section('content')
-    <section id="user_content">
-        <div id="user_data_image">
-       
+    <section class="container">
+        <div id="user_content">
+            <div id="user_data_image">
+        
+            </div>
+            <h4 class="text-center">Nathan Barros Miranda</h4>
         </div>
-        <h4 class="text-center">Nathan Barros Miranda</h4>
+        
     </section>
-
+    @include('layouts.components.footer')
     <style>
         #user_content{
             background-color: red;

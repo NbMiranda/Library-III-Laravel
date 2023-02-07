@@ -60,12 +60,6 @@
               <li>
                 <a href="#!" id="footer_link" class="text-white">Contatos</a>
               </li>
-              <li>
-                <a href="#!" id="footer_link" class="text-white">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" id="footer_link" class="text-white">Link 4</a>
-              </li>
             </ul>
           </div>
           <!--Grid column-->
@@ -80,12 +74,6 @@
               </li>
               <li>
                 <a href="#!"id="footer_link"  class="text-white">Link </a>
-              </li>
-              <li>
-                <a href="#!" id="footer_link" class="text-white">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" id="footer_link" class="text-white">Link 4</a>
               </li>
             </ul>
           </div>

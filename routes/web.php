@@ -16,13 +16,12 @@ use App\Http\Middleware\CheckLoginMiddleware;
 */
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
-//Login
-// Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
-// Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('loginPost');
-// //Register
-// Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'register'])->name('register');
-// Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store'])->name('register');
-//Contact
+//OOPS
+Route::get('/oops', function(){return view('layouts.components.oops');})->name('oops');
+//Livros CRUD
+Route::get('/books', [\App\Http\Controllers\BookController::class, 'books'])->name('books');
+Route::post('/books', [\App\Http\Controllers\BookController::class, 'books'])->name('books');
+//Contatos
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 
 Auth::routes();
@@ -32,3 +31,6 @@ Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logou
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 route::get('/myAccount', [App\Http\Controllers\MyAccountController::class, 'myAccount'])->name('myAccount');
+
+//Fallback
+Route::fallback(function(){return view('layouts.components.error');});

@@ -1,6 +1,6 @@
 @extends('layouts.doctype')
 
-@section('title', 'Contact');
+@section('title', 'Contact')
 
 @section('content')
     
@@ -13,6 +13,7 @@
         <input type="submit" value="Enviar">
       </form>
     </div>
+    @include('layouts.components.footer')
     <style>
         h1 {
           color: red;

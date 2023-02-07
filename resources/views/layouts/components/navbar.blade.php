@@ -15,7 +15,7 @@
                     <a class="nav-link" aria-current="page" href="/">Library</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('index') }}">Somewhere</a>
+                    <a class="nav-link" href="{{ route('books') }}">Livros</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('index') }}">somewhere</a>
