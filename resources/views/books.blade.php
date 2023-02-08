@@ -32,7 +32,7 @@
                 </div>
                 {{-- writer CRUD link --}}
                 <div class="col-2 text-center">
-                    <a href="writerForm?page=1" class="btn btn-outline-danger"
+                    <a href="{{ route('writers') }}" class="btn btn-outline-danger"
                      id="writer_btn">Novo escritor</a>
                 </div>
             </div>

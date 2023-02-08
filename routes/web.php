@@ -21,6 +21,9 @@ Route::get('/oops', function(){return view('layouts.components.oops');})->name('
 //Livros CRUD
 Route::get('/books', [\App\Http\Controllers\BookController::class, 'books'])->name('books');
 Route::post('/books', [\App\Http\Controllers\BookController::class, 'books'])->name('books');
+//Writers CRUD
+Route::get('/writers', [\App\Http\Controllers\WriterController::class, 'writers'])->name('writers');
+Route::post('/writers', [\App\Http\Controllers\WriterController::class, 'crud'])->name('writers');
 //Contatos
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 

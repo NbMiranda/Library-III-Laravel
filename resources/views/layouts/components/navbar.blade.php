@@ -18,7 +18,7 @@
                     <a class="nav-link" href="{{ route('books') }}">Livros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('index') }}">somewhere</a>
+                    <a class="nav-link" href="{{ route('writers') }}">Escritores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact') }}">Contact</a>
