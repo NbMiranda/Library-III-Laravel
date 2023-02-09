@@ -24,7 +24,7 @@
                     <span id="writerName{{$id}}">{{ $row->writer_name }}</span>
                     <button type="button" id="edit_btn{{$id}}" onclick="edit_data({{$id}})">Editar</button>
                 <br><br>
-                    <button type="button" id="save_btn{{$id}}" onclick="save_data({{$id}})" style="display:none;">Salvar</button>
+                    <button type="button" name="writer_create" id="save_btn{{$id}}" onclick="save_data({{$id}})" style="display:none;">Salvar</button>
 
                 @endforeach
             </form>
