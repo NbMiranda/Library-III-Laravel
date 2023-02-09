@@ -18,35 +18,44 @@ class WriterController extends Controller
     }
     // Create writer
     public function crud(Request $request){
-        // dd($request->has('writer_create'));
-        $data = $request->all();
-        switch (true) {
-            case $request->has('writer_create'):
-                Writer::create($data);
-                return redirect()->route('writers');
+        $id = $request->input('id');
+
+        $writer = Writer::findOrFail($id);
+        $writer->update($request->all());      
+        
+
+        // switch (true) {
+        //     case $request->has('writer_create'):
+        //         Writer::create($data);
+        //         return redirect()
+        //             ->route('writers')
+        //             ->with('success', 'Livro cadastrado com sucesso');
                 
-                break;
+        //         break;
 
-            case $request->has('writer_update'):
-                $id = 1;
-                $writer = Writer::find($id);
-                $writer->writer_name = $request->input('writer_name');
-                $writer->save();
-                return redirect()->route('writers');
+        //     case $request->has('writer_update'):
+        //         $id = $request->input('writer_id');
+        //         $writer = Writer::find($id);
+        //         $writer->writer_name = $request->input('writer_name');
+        //         $writer->save();
+        //         return redirect()
+        //             ->route('writers')
+        //             ->with('success', 'Livro atualizado com sucesso');
+                
+        //         break;
 
-                break;
+        //     case $request->has('writer_delete'):
+        //         $id = $request->input('writer_id');
+        //         $writer = Writer::find($id);
+        //         $writer->delete();
+        //         return redirect()
+        //             ->route('writers')
+        //             ->with('success', 'Livro deletado com sucesso');
 
-            case $request->has('writer_delete'):
-                $id = 5;
-                $writer = Writer::find($id);
-                $writer->delete();
-                return redirect()->route('writers');
-
-                break;
+        //         break;
             
-            ;
-        }
+        //     ;
+        // }
 
     }
-
 }

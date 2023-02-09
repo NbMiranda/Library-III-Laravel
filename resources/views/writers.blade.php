@@ -2,22 +2,34 @@
 
 @section('title', 'Livros')
     
-
-
 @section('content')
 
 <section class="container">
-    <h1 class="text-center" style="margin: 1em 0 2em 0;">Escritores</h1>
+    <h1 class="text-center" style="margin: 1em 0 1.5em 0;">Escritores</h1>
+        {{-- Message --}}
+    @if ($mensagem = session('success'))
+        <p style="color:green;"><b>{{$mensagem = session('success')}}</b></p>
+    
+    @else
+        <p style="color:#f5f5f5;">.</p>
 
+    @endif
     <div class="row">
-        
         <div class="col-6 text-center">
-            <h3 style="margin-bottom:1em; color:red;">Escritores</h3>
-            @foreach ($result as $row)
-                <p>{{ $row->writer_name }}</p> 
-                
-            @endforeach
+            <form action="{{ route('writers') }}" method="POST">
+                @csrf
+                <h3 style="margin-bottom:1em; color:red;">Escritores</h3>
+                @foreach ($result as $row)
+                    @php $id = $row->id; @endphp
+                    <span id="writerName{{$id}}">{{ $row->writer_name }}</span>
+                    <button type="button" id="edit_btn{{$id}}" onclick="edit_data({{$id}})">Editar</button>
+                <br><br>
+                    <button type="button" id="save_btn{{$id}}" onclick="save_data({{$id}})" style="display:none;">Salvar</button>
+
+                @endforeach
+            </form>
         </div>
+        
         {{-- New Writer --}}
         <div class="col-6">
             <h3 class="text-center" style="margin-bottom: 1em;">Cadastre seu escritor</h3>
@@ -40,7 +52,7 @@
             <h3 class="text-center" style="margin:1em;">Edite o escritor</h3>
             <form action="{{ route('writers') }}" method="post">
                 @csrf
-                <select class="form-select" aria-label="Default select example" name="new_writer" id="new_writer" style="margin-bottom:1.5em;">
+                <select class="form-select" aria-label="Default select example" name="writer_id" id="new_writer" required style="margin-bottom:1.5em;">
                     <option value="">-- Selecione o escritor --</option>
                     @foreach ($result as $row)
                         <option value={{ $row->id }}">{{ $row->writer_name }}</option>;
@@ -73,7 +85,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <select class="form-select" aria-label="Default select example" name="" id="" style="margin-bottom:1.5em;">
+                                <select class="form-select" aria-label="Default select example" name="writer_id" id="" style="margin-bottom:1.5em;">
                                     <option value="">-- Selecione o escritor --</option>
                                     @foreach ($result as $row)
                                     <option value={{ $row->id }}">{{ $row->writer_name }}</option>;
