@@ -18,45 +18,32 @@ class WriterController extends Controller
     }
     // Create writer
     public function crud(Request $request){
-        $id = $request->input('id');
+        // dd($request);
 
-        $writer = Writer::findOrFail($id);
-        $writer->update($request->all());      
-        
 
-        switch (true) {
-            case $request->has('writer_create'):
-                $writer = Writer::findOrFail($id);
-                $writer->update($request->all()); 
-                // return redirect()
-                //     ->route('writers')
-                //     ->with('success', 'Livro cadastrado com sucesso');
-                
-                break;
-
-            case $request->has('writer_update'):
-                $id = $request->input('writer_id');
-                $writer = Writer::find($id);
-                $writer->writer_name = $request->input('writer_name');
-                $writer->save();
-                return redirect()
-                    ->route('writers')
-                    ->with('success', 'Livro atualizado com sucesso');
-                
-                break;
-
-            case $request->has('writer_delete'):
-                $id = $request->input('writer_id');
-                $writer = Writer::find($id);
-                $writer->delete();
-                return redirect()
-                    ->route('writers')
-                    ->with('success', 'Livro deletado com sucesso');
-
-                break;
+        if($request->has('writer_delete')){
+            $id = $request->input('writer_delete');
             
-            ;
+            $writer = Writer::find($id);
+            $writer->delete();
+            return redirect()
+                ->route('writers')
+                ->with('success', 'Livro deletado com sucesso');
         }
-
+        else if($request->has('writer_create')){
+            // dd($request->all());
+            $writer = new Writer;
+            $writer->writer_name = $request->input('writer_name');
+            $writer->save();
+            return redirect()
+            ->route('writers')
+            ->with('success', 'Livro deletado com sucesso');
+        }
+        else{
+            $id = $request->input('id');
+            $writer = Writer::findOrFail($id);
+            $writer->update($request->all());
+        }
+                              
     }
 }
