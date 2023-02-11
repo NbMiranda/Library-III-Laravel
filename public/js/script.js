@@ -1,9 +1,9 @@
 function edit_data(id){
     // Trocando o botão editar para salvar
     document.getElementById('edit_btn' + id).style.display = "none";
-    document.getElementById('save_btn' + id).style.display = "inline-block";
-    document.getElementById('delete_btn' +id).style.display = "inline-block";
-    document.getElementById('close' +id).style.display = "inline-block"; 
+    document.getElementById('save_btn' + id).style.display = "";
+    document.getElementById('delete_btn' +id).style.display = "";
+    document.getElementById('close' +id).style.display = ""; 
     // btn.innerHTML = "<button type='button' id='save_btn{{$id}}' onclick='save_data"+id+"'>Salvar</button>"
 
 
@@ -13,7 +13,7 @@ function edit_data(id){
 
     // console.log(writer);
 
-    writerName.innerHTML = "<input type='text' name='writerName"+id+"' class='form-control' id='name_text" + id + "'value='" + writer + "' style='text-align: start;'>";
+    writerName.innerHTML = "<input type='text' name='writerName"+id+"' class='form-control' id='name_text" + id + "'value='" + writer + "' >";
 
 
 }
@@ -78,7 +78,7 @@ async function save_data(id){
     document.getElementById('save_btn' + id).style.display = "none";
     document.getElementById('delete_btn' + id).style.display = "none";
     document.getElementById('close' +id).style.display = "none"; 
-    document.getElementById('edit_btn' + id).style.display = "block";
+    document.getElementById('edit_btn' + id).style.display = "";
 
 }
 
