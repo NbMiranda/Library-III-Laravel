@@ -31,7 +31,7 @@
             <div class="col-3"></div>
 
             <div class="col-6">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="width:auto;">
                     Você já está logado <strong>{{ auth()->user()->name }} </strong> 
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>

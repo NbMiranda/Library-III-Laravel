@@ -4,20 +4,20 @@
 
 
 @section('content')
-    <section class="container">
+    <section class="">
         <h1 class="red text-center" style="margin:1.1em;">
-            Biblioteca
+            Biblioteca 
         </h1>
         
         <div class="row" id="index_text">
             <div class="col-7">
                 <p class="text-center" id="paragraph">
                     Seja muito bem vindo a Biblioteca virtual em sua versão nova e 
-                    melhorada, faça o <a href="" id="links">Login</a>
+                    melhorada, faça o <a href="{{ route('login') }}" id="links">Login</a>
                     para ter acesso total a biblioteca. <br> <br>
                     Aqui caso você queira cadastrar um livro ou ver todoas os
                     livros cadastrados é só ir em 
-                    <a href="" id="links">Livros</a>, e cadastrar seu livro.
+                    <a href="{{ route('books') }}" id="links">Livros</a>, e cadastrar seu livro.
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias assumenda pasjoida dajsoidaisjd kansdjas9jd
                 </p>    
             </div>

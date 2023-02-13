@@ -12,7 +12,8 @@ class WriterController extends Controller
     }
     public function writers(){
         
-        $result = Writer::all();
+        // $result = Writer::all();
+        $result = Writer::paginate(8);
 
         return view('writers', compact('result'));
     }
@@ -27,8 +28,8 @@ class WriterController extends Controller
             $writer = Writer::find($id);
             $writer->delete();
             return redirect()
-                ->route('writers')
-                ->with('success', 'Livro deletado com sucesso');
+                ->route('writers');
+                
         }
         else if($request->has('writer_create')){
             // dd($request->all());
@@ -36,8 +37,8 @@ class WriterController extends Controller
             $writer->writer_name = $request->input('writer_name');
             $writer->save();
             return redirect()
-            ->route('writers')
-            ->with('success', 'Livro deletado com sucesso');
+            ->route('writers');
+            
         }
         else{
             $id = $request->input('id');
