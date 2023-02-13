@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="moonBtn" onclick="moon()" style="display:;">Moon</button> <br><br>
+
+    <button type="button" id="sunBtn" onclick="sun()" style="display:none;">Sun</button>
+
+    <script>
+        function moon(){
+            document.getElementById("moonBtn").style.display = "none";
+            document.getElementById("sunBtn").style.display = "";
+            
+            localStorage.setItem("none", "displayNone");
+            
+            document.body.style.backgroundColor = "black"
+            
+            localStorage.removeItem('light');
+            localStorage.setItem('dark', 'black');
+
+        }
+        let moonBtn = localStorage.getItem('dark');
+        if (moonBtn) {
+            document.getElementById("moonBtn").style.display = "none";
+            document.getElementById("sunBtn").style.display = "";
+        }
+
+        let darkMode = localStorage.getItem('dark');
+        if (darkMode) {
+            document.body.style.backgroundColor = "black";
+            
+            
+        }
+
+        function sun(){
+            document.getElementById("moonBtn").style.display = "";
+            document.getElementById("sunBtn").style.display = "none";
+            document.body.style.backgroundColor = "white";
+
+            localStorage.removeItem('dark');
+            localStorage.setItem('light', 'white');
+        
+        }
+
+        let lightMode = localStorage.getItem('light');
+        if (lightMode) {
+            document.body.style.backgroundColor = "white";
+            
+        }
+    </script>
+</body>
+</html>
