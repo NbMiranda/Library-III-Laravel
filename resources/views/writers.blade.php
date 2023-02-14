@@ -60,13 +60,13 @@
                 @foreach ($result as $row)
                     @php $id = $row->id; @endphp
                     {{-- <tbody> --}}
-                        <tr>
-                            <th scope="row">{{ $i }}</th>
-                            <td id="writerName{{$id}}"> {{ $row->writer_name }}</td>
+                        <tr style="height: 3.5em;">
+                            <th scope="row" style="width: 7.1em;">{{ $i }}</th>
+                            <td id="writerName{{$id}}" style="width: 41.5em;"> {{ $row->writer_name }}</td>
                             <td class="text-center">
                                 {{-- Edit Btn --}}
                                 <button type="button" class="btn btn-outline-warning" 
-                                id="edit_btn{{$id}}" onclick="edit_data({{$id}})" style="border:none;color:black;">
+                                id="edit_btn{{$id}}" onclick="edit_data({{$id}})" style="display:inline; border:none;color:black;">
                                     <i class="fa-solid fa-user-pen" id="icons"></i>
                                 </button>
                                 
@@ -135,47 +135,21 @@
                 <i class="fa-solid fa-forward" id="pageNav"></i> 
             </a> 
         @endif
-
+        {{-- {{ $arrayId[5] }} --}}
 
         
-        {{-- {{dd($result)}} --}}
-        {{-- {{$result->links()}} --}}
+        {{-- {{ dd($firstItem) }} --}}
     </div>
-    
-    {{-- @foreach ($result as $row)
-        @php $id = $row->id; @endphp
 
-        <div class="row" style="border:1px solid black;">
-            <div class="col-2"></div>
-            <div class="col-8 text-center" style="margin-top:.5em;">
-                <p style="font-size:1.1em;" id="writerName{{$id}}">{{ $row->writer_name }}</p>
-            </div>
-            <div class="col-2" style="margin-top:.5em;">
-                <button type="button" class="btn btn-warning" id="edit_btn{{$id}}" onclick="edit_data({{$id}})">Editar</button>
-    
-                <button type="button" class="btn btn-success" name="writer_create" id="save_btn{{$id}}" onclick="save_data({{$id}})" style="display:none;">Salvar</button>
-            </div>
-        </div>
-    @endforeach --}}
+    <script>
+        window.arrayId = {!! json_encode($arrayId) !!};
+        window.firstItem = "{{ $firstItem }}";
+        window.count = "{{ $count }}";
+    </script>
+    {{-- {{ dd($firstItem) }} --}}
+    {{-- {{ dd(dd($result->count())) }} --}}
+
 </section>
 
-<style>
-
-</style>
 
 @endsection
-
-{{--
-        <div class="row ">
-            <div class="col-4"></div>
-            <div class="col-6" style="margin-top:.5em;">
-                <p id="writerName{{$id}}">{{ $row->writer_name }}</p>
-            </div>
-            <div class="col-2" style="margin-top:.5em;">
-                <button type="button" class="btn btn-warning" id="edit_btn{{$id}}" onclick="edit_data({{$id}})">Editar</button>
-    
-                <button type="button" class="btn btn-danger" name="writer_create" id="save_btn{{$id}}" onclick="save_data({{$id}})" style="display:none;">Salvar</button>
-            </div>
-        </div>
-
---}}

@@ -65,11 +65,11 @@
                         @endif
                         
                         {{-- Dark mode btn --}}
-                        <a class="nav_link" type="button" id="darkBtn" onclick="darkMode()" style="display: ;"> 
+                        <a class="nav_link" type="button" id="moonBtn" onclick="darkMode()" style="display: ;"> 
                             <i class="fa-solid fa-moon"></i> <span class="nav_name">Dark mode</span> 
                         </a>
                         {{-- Light mode btn --}}
-                        <a class="nav_link" type="button" id="lightBtn" onclick="lightMode()" style="display:none;"> 
+                        <a class="nav_link" type="button" id="sunBtn" onclick="lightMode()" style="display:none;"> 
                             <i class="fa-solid fa-sun"></i><span class="nav_name">Light mode</span> 
                         </a>
 

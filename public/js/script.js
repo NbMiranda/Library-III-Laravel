@@ -1,43 +1,58 @@
 function edit_data(id){
     // Trocando o botão editar para salvar
     document.getElementById('edit_btn' + id).style.display = "none";
-    document.getElementById('save_btn' + id).style.display = "";
-    document.getElementById('delete_btn' +id).style.display = "";
-    document.getElementById('close' +id).style.display = "";
-    document.getElementById('th_text').style.display = ""; 
- 
-    // btn.innerHTML = "<button type='button' id='save_btn{{$id}}' onclick='save_data"+id+"'>Salvar</button>"
+    document.getElementById('save_btn' + id).style.display = "inline-block";
+    document.getElementById('delete_btn' +id).style.display = "inline-block";
+    document.getElementById('close' +id).style.display = "inline-block";
+    document.getElementById('th_text').style.display = "inline-block"; 
+    
+    // var from writers.blade
+    let first = window.firstItem
+    let last = window.lastItem
+    let count = window.count;
 
-
+    // Hide other buttons
+    let array = window.arrayId;
+    for (let i = 0; i < count; i++) {
+        const n = array[first];
+        document.getElementById('edit_btn' + n).style.display = "none";
+        first++    
+    }
+    
     var writerName = document.getElementById('writerName'+id);
 
     writer = writerName.innerHTML;
 
-    // console.log(writer);
-
     writerName.innerHTML = "<input type='text' name='writerName"+id+"' class='form-control' id='name_text" + id + "'value='" + writer + "' >";
-
-
 }
 
 // Close Edit 
 
 function close_btn(id){
-    
-     document.getElementById('edit_btn' + id).style.display = "inline-block";
-     document.getElementById('save_btn' + id).style.display = "none";
-     document.getElementById('delete_btn' +id).style.display = "none"; 
-     document.getElementById('th_text').style.display = "none"; 
-     
+    document.getElementById('edit_btn' + id).style.display = "inline-block";
+    document.getElementById('save_btn' + id).style.display = "none";
+    document.getElementById('delete_btn' +id).style.display = "none"; 
+    document.getElementById('th_text').style.display = "none"; 
  
-     var writerName = document.getElementById('writerName'+id);
+    var writerName = document.getElementById('writerName'+id);
           
-     writerName.innerHTML = "<td id='writerName"+ id +"'>"+ writer+"</td>";
+    writerName.innerHTML = "<td id='writerName"+ id +"'>"+ writer+"</td>";
      
-     document.getElementById('close' +id).style.display = "none";
+    document.getElementById('close' +id).style.display = "none";
 
-     document.getElementById('th_text').style.display = "none"; 
+    document.getElementById('th_text').style.display = "none"; 
+     
+    // var from writers.blade
+    let first = window.firstItem
+    let count = window.count;
 
+    // Hide other buttons
+    let array = window.arrayId;
+    for (let i = 0; i < count; i++) {
+        const n = array[first];
+        document.getElementById('edit_btn' + n).style.display = "";
+        first++    
+    }
     
 }
 
@@ -104,10 +119,20 @@ async function save_data(id){
     document.getElementById('save_btn' + id).style.display = "none";
     document.getElementById('delete_btn' + id).style.display = "none";
     document.getElementById('close' +id).style.display = "none"; 
-    document.getElementById('edit_btn' + id).style.display = "";
-    document.getElementById('th_text').style.display = ""; 
+    document.getElementById('edit_btn' + id).style.display = "inline-block";
+    document.getElementById('th_text').style.display = "none"; 
 
-
+    // var from writers.blade
+    let first = window.firstItem
+    let count = window.count;
+    
+    // Hide other buttons
+    let array = window.arrayId;
+    for (let i = 0; i < count; i++) {
+        const n = array[first];
+        document.getElementById('edit_btn' + n).style.display = "";
+        first++    
+    }
 }
 
 // Sidebar
@@ -149,45 +174,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
 });
 
+
 // Dark Mode
 function darkMode(){
-    document.getElementById('darkBtn').style.display = 'none';
-    document.getElementById('lightBtn').style.display = '';
+    document.getElementById("moonBtn").style.display = "none";
+    document.getElementById("sunBtn").style.display = "";
+    
+    localStorage.setItem("none", "displayNone");
+    
+    document.body.style.backgroundColor = "#141414"
+    
+    localStorage.removeItem('light');
+    localStorage.setItem('dark', 'black');
 
-    localStorage.setItem('displayNone', 'none');
-    localStorage.setItem('displayInline', '');
+}
+let moonBtn = localStorage.getItem('dark');
+if (moonBtn) {
+    document.getElementById("moonBtn").style.display = "none";
+    document.getElementById("sunBtn").style.display = "";
+    document.body.style.backgroundColor = "#141414";
 
-
-    var newColor = "#141414";
-    document.body.style.backgroundColor = newColor;
-    localStorage.setItem("background-color", newColor);
-  }
-
-//   Mudando botão
-var displayNone = localStorage.getItem("displayNone");
-var displayInline = localStorage.getItem("displayInline");
-if (displayNone || displayInline) {
-    document.getElementById('darkBtn').style.display = displayNone;
-    document.getElementById('lightBtn').style.display = displayInline;
 }
 
-//   Mudando cor
-  var savedColor = localStorage.getItem("background-color");
-  if (savedColor) {
-    document.body.style.backgroundColor = savedColor;
-  }
+// let darkMode = localStorage.getItem('dark');
+// if (darkMode) {
+    
+    
+// }
 
-// Light Mode
 function lightMode(){
-    document.getElementById('darkBtn').style.display = '';
-    document.getElementById('lightBtn').style.display = 'none';
-    var newColor = "#f5f5f5";
-    document.body.style.backgroundColor = newColor;
-    localStorage.setItem("background-color", newColor);
-  }
-//Mudando a cor
-var savedColor = localStorage.getItem("background-color");
-if (savedColor) {
-    document.body.style.backgroundColor = savedColor;
+    document.getElementById("moonBtn").style.display = "";
+    document.getElementById("sunBtn").style.display = "none";
+    document.body.style.backgroundColor = "#f5f5f5";
 
+    localStorage.removeItem('dark');
+    localStorage.setItem('light', 'white');
+
+}
+
+let light = localStorage.getItem('light');
+if (light) {
+    document.body.style.backgroundColor = "#F5F5F5";
+    
 }

@@ -11,11 +11,14 @@ class WriterController extends Controller
         
     }
     public function writers(){
-        
-        // $result = Writer::all();
-        $result = Writer::paginate(8);
+        $arrayId = Writer::pluck('id')->all();
 
-        return view('writers', compact('result'));
+        $result = Writer::paginate(7);
+
+        $firstItem = $result->firstItem() - 1;
+        $count = $result->count();
+
+        return view('writers', compact('result', 'arrayId', 'firstItem', 'count'));
     }
     // Create writer
     public function crud(Request $request){
