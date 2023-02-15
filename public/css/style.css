@@ -19,7 +19,7 @@ body{
 #login{
     /* border: 1px solid red; */
     /* border-radius: 9px; */
-    margin-top: 18vh;
+    margin-top: 15vh;
     padding: 10px;
 }
 .form-control:focus, .form-select:focus{
@@ -85,7 +85,7 @@ body{
 }
 .form-group {
 position: relative;
-margin-bottom: 1.5rem;
+margin-bottom: 1rem;
 }
 
 .form-control-placeholder {

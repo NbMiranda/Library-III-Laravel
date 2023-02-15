@@ -2,7 +2,6 @@
 
 @section('title', 'Login')
     
-
 @section('content')
     <section class="container">
         <div class="row">
@@ -36,15 +35,24 @@
                         @enderror
 
                         <a href="{{ route('register') }}" id="register_link">
-                            Não tem cadastro registre-se agora</a>
+                            Não tem cadastro registre-se agora
+                        </a>
                         
                         
+                    </div>
+                    
+                    <div class="form-group">
+                        @if (Route::has('password.request'))
+
+                        <a href="{{ route('password.request') }}" id="register_link">
+                            Esqueceu sua senha?
+                        </a>
+                        @endif
                     </div>
 
 
                     {{-- submit form button (login) --}}
-                    <button type="submit" class="btn btn-danger"
-                    style="margin-top: .8em">
+                    <button type="submit" class="btn btn-danger">
                     {{ __('Login') }}
                     </button>
                 </form>

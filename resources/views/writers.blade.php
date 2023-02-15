@@ -150,6 +150,7 @@
     {{-- {{ dd(dd($result->count())) }} --}}
 
 </section>
+{{-- @include('layouts.components.footer')  --}}
 
 
 @endsection

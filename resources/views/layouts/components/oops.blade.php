@@ -5,7 +5,7 @@
 
 
 @section('content')
-    <div id="center">
+    <div id="center" style="width: 101%;">
         <div id="oops">
             <h1 class="text-center">Oops!</h1>
             <p class="text-center">
@@ -21,7 +21,8 @@
             </figure>
         </div>
     
-    </div>   
+    </div>  
+    @include('layouts.components.footer') 
     
     <style>
         #center{

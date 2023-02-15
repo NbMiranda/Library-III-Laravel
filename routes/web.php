@@ -28,7 +28,9 @@ Route::post('/writers', [\App\Http\Controllers\WriterController::class, 'crud'])
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 
 Auth::routes();
-
+// Reset password 
+Route::get('/reset', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('reset');
+// logout
 Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

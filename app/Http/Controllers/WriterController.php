@@ -30,8 +30,7 @@ class WriterController extends Controller
             
             $writer = Writer::find($id);
             $writer->delete();
-            return redirect()
-                ->route('writers');
+            return redirect()->back();
                 
         }
         else if($request->has('writer_create')){
@@ -39,8 +38,7 @@ class WriterController extends Controller
             $writer = new Writer;
             $writer->writer_name = $request->input('writer_name');
             $writer->save();
-            return redirect()
-            ->route('writers');
+            return redirect()->back();
             
         }
         else{

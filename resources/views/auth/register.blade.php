@@ -13,28 +13,30 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     {{-- name Input --}}
-                    <label for="name" id="label">Nome</label>
-
-                    <input id="name" type="text" class="form-control @error('name') is-invalid 
-                    @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                    placeholder="Digite seu nome">
-
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    {{-- Email Input --}}
                     <div class="form-group">
-                    <label for="email" id="label">Email</label>
-                    <input id="email" type="email" placeholder="Digite seu email" class="form-control @error('email')  
-                        is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <label for="name" id="label">Nome</label>
 
-                        @error('email')
+                        <input id="name" type="text" class="form-control @error('name') is-invalid 
+                        @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                        placeholder="Digite seu nome">
+
+                        @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div>
+                    {{-- Email Input --}}
+                    <div class="form-group">
+                        <label for="email" id="label">Email</label>
+                        <input id="email" type="email" placeholder="Digite seu email" class="form-control @error('email')  
+                            is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </div>
                     {{-- Password Input --}}
                     <div class="form-group">

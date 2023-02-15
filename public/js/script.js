@@ -188,6 +188,7 @@ function darkMode(){
     localStorage.setItem('dark', 'black');
 
 }
+
 let moonBtn = localStorage.getItem('dark');
 if (moonBtn) {
     document.getElementById("moonBtn").style.display = "none";
@@ -195,13 +196,7 @@ if (moonBtn) {
     document.body.style.backgroundColor = "#141414";
 
 }
-
-// let darkMode = localStorage.getItem('dark');
-// if (darkMode) {
-    
-    
-// }
-
+// light mode
 function lightMode(){
     document.getElementById("moonBtn").style.display = "";
     document.getElementById("sunBtn").style.display = "none";
