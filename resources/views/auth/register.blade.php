@@ -66,7 +66,6 @@
                     {{ __('Register') }}
                     </button>
                 </form>
-
             </div>
             <div class="col-sm-0 col-md-2 col-lg-3"></div>
         </div>

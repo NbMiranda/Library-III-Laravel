@@ -22,10 +22,14 @@
         <header class="header" id="header">
             <div class="header_toggle"> <i class="fa-solid fa-bars" style="margin-left: 0.3em;" id="header-toggle"></i> </div>
             @if (Auth::check())
-                <div class="header_img"> <img src="{{ URL::asset('/imgs/redperson.png') }}" alt=""> </div>
+                {{-- <div class="header_img"> <img src="{{ URL::asset('/imgs/user_images/'.$userImage) }}" alt=""> </div> --}}
+                <div id="user_top_image" 
+                style="background-image: url({{ URL::asset('/imgs/user_images/'.$userImage) }});">     
+                </div>
                                 
             @endif
         </header>
+        
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">          
                 <div>
@@ -90,6 +94,15 @@
         {{-- Content --}}
         @yield('content')
         <style>
+        #user_top_image{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height:3em;
+            width:3em;
+            border-radius:50%;
+        }
+
         ::-webkit-scrollbar-track{
         background-color: black;
         }

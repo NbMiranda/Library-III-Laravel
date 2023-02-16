@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\MensagemTestMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\CheckLoginMiddleware;
@@ -35,7 +36,16 @@ Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logou
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-route::get('/myAccount', [App\Http\Controllers\MyAccountController::class, 'myAccount'])->name('myAccount');
+Route::get('/myAccount', [App\Http\Controllers\MyAccountController::class, 'myAccount'])->name('myAccount');
+Route::post('/myAccount', [App\Http\Controllers\MyAccountController::class, 'updatePhoto'])->name('myAccount');
+
+//email markdown
+// Route::get('/message-test', function(){
+//     return new MensagemTestMail();
+//     Mail::to('nathanbmiranda@hotmail.com')->send(new MensagemTestMail());
+//     return "E-mail enviado com sucesso";
+// });
+
 
 //Fallback
 Route::fallback(function(){return view('layouts.components.error');});

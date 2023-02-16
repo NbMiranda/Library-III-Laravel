@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 // use App\Http\Middleware\CheckLoginMiddleware;
 
@@ -11,6 +12,28 @@ class MyAccountController extends Controller
         $this->middleware('validation');
     }
     public function myAccount(){
-        return view('myAccount');
+        $id = auth()->id();
+        $userImage = User::find($id)->user_image;
+        // dd($userImage);
+        return view('myAccount', compact('userImage'));
     }
+
+    public function updatePhoto(Request $request){
+        $requestImage = $request->file('user_image');
+
+        // Criando nome unico para a imagem
+        $extension = $requestImage->extension();
+        $imageName = $requestImage->getClientOriginalName() . strtotime("now") . "." . $extension;
+
+        // Movendo para pasta separa no projeto
+        $requestImage->move(public_path('imgs/user_images'), $imageName); 
+        
+        // inserindo o nome no banco de dados
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $user->user_image = $imageName;
+        $user->save();
+        return redirect()->back();
+    }
+
 }
