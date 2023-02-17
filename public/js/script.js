@@ -8,7 +8,7 @@ function edit_data(id){
     
     // var from writers.blade
     let first = window.firstItem
-    let last = window.lastItem
+    // let last = window.lastItem
     let count = window.count;
 
     // Hide other buttons
@@ -212,3 +212,114 @@ if (light) {
     document.body.style.backgroundColor = "#F5F5F5";
     
 }
+
+// ---------- LIVROS ----------
+
+// Add a book
+
+function addBook(){
+    // Book title
+    document.getElementById('book_add_title').style.display = "none";
+    document.getElementById('book_title').style.display = "block";
+
+    // Genres
+    document.getElementById('genre').style.display = "none";
+    document.getElementById('genre_input').style.display = "block";
+
+    // Writer
+    document.getElementById('writer').style.display = "none";
+    document.getElementById('writer_select').style.display = "block";
+
+    // Save Btn
+    document.getElementById('book_cover').style.flexDirection = "column";
+    document.getElementById('save_btn').style.display = "";
+    document.getElementById('cancel_btn').style.display = "";
+    
+}
+// Cancel add a book
+function cancelAddBook(){
+    // Book title
+    document.getElementById('book_add_title').style.display = "block";
+    document.getElementById('book_title').style.display = "none";
+
+    // Genres
+    document.getElementById('genre').style.display = "block";
+    document.getElementById('genre_input').style.display = "none";
+
+    // Writer
+    document.getElementById('writer').style.display = "block";
+    document.getElementById('writer_select').style.display = "none";
+
+    // Save Btn
+    document.getElementById('save_btn').style.display = "none";
+    document.getElementById('cancel_btn').style.display = "none";
+    
+}
+
+// show inputs to update
+function updateBook(id){
+        // Trocando o botão editar para salvar
+        // document.getElementById('updateBtn' + id).style.display = "none";
+        // document.getElementById('save_btn' + id).style.display = "inline-block";
+        // document.getElementById('delete_btn' +id).style.display = "inline-block";
+        // document.getElementById('close' +id).style.display = "inline-block";
+        // document.getElementById('th_text').style.display = "inline-block"; 
+        
+        
+        
+        var bookName = document.getElementById('book_title'+id);
+    
+        bookTitle = bookName.innerHTML;
+    
+        bookName.innerHTML = "<input type='text' name='bookName"+id+"' class='form-control' placeholder='Nome do Livro' id='name_input" + id + "'value='" + bookTitle + "' >";
+}
+
+
+// update Book
+// async function updateBook(id){
+    
+//     var bookName = document.getElementById("name_text" + id).value;
+    
+//     document.getElementById("writerName" + id).innerHTML = bookName;
+
+//     var dataForm = {
+//         id: id,
+//         writer_name: bookName
+//     };
+//     console.log(dataForm);
+
+//     await fetch("/writers", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//             'url': '/writers',
+//             "X-CSRF-Token": document.querySelector('input[name=_token]').value
+//         },
+//         body: JSON.stringify(dataForm)
+//     })
+//     .then(response => response.json())
+//     .then(result => console.log(result))
+//     .catch(error => console.error(error));
+
+//     const result = JSON.stringify(dataForm);
+//     console.log(result);
+
+//     document.getElementById('save_btn' + id).style.display = "none";
+//     document.getElementById('delete_btn' + id).style.display = "none";
+//     document.getElementById('close' +id).style.display = "none"; 
+//     document.getElementById('edit_btn' + id).style.display = "inline-block";
+//     document.getElementById('th_text').style.display = "none"; 
+
+//     // var from writers.blade
+//     let first = window.firstItem
+//     let count = window.count;
+    
+//     // Hide other buttons
+//     let array = window.arrayId;
+//     for (let i = 0; i < count; i++) {
+//         const n = array[first];
+//         document.getElementById('edit_btn' + n).style.display = "";
+//         first++    
+//     }
+// }

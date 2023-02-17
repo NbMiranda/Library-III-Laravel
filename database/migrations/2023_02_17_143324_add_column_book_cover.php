@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->unsignedBigInteger('writer_id')->after('genre');
-            $table->foreign('writer_id')->references('id')->on('writers');
+        Schema::table('books', function(Blueprint $table){
+            $table->longText('book_cover')->nullable()->after('writer_id');
         });
     }
 
@@ -26,9 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropForeign(['writer_id']);
-            $table->dropColumn('writer_id');
+        Schema::table('books', function(Blueprint $table){
+            $table->dropColumn('book_cover');
         });
     }
 };

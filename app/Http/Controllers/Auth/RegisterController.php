@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -67,8 +68,14 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        Mail::to($data['email'])->send(new MensagemTestMail());
+    {   
+
+        $email = $data['email'];
+        if (Str::endsWith($email, '.com') || Str::endsWith($email, '.br')) {
+            Mail::to($data['email'])->send(new MensagemTestMail());
+        } else {
+            // A string não termina com ".com"
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
