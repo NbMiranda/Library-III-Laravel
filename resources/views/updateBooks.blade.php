@@ -7,6 +7,7 @@
     @php
         $book = $books[0]
     @endphp
+
     <section class="container">
         <h1 class="red text-center" style="margin:2em;"><i id="bookH1">{{$book->book_name}}</i>
             {{-- Update Btn --}}
@@ -22,18 +23,82 @@
         </h1> 
 
         
-
-        <form action="{{route('books')}}" method="post">
+        <form action="{{route('books')}}" method="post" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="id" value="{{$book->id}}">
             <div class="row">
                 {{-- Book cover --}}
-                <div class="col-5 text-center d-flex justify-content-center">
-                    <div id="book_cover">
-                            
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div id="book_cover" style="background-image: url({{ URL::asset('/imgs/book_covers/'.$book->book_cover) }}) ;">
+                        <div id="edit_btn">
+                            {{-- Book cover Btn --}}
+                            <button class="btn btn-link " type="button" id="change_cover"  data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            {{-- Dropdown menu --}}
+                            <ul class="dropdown-menu">
+                                <li>
+                                    {{-- button trigger Modal --}}
+                                    <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Adicionar Capa 
+                                    </a>
+                                </li>
+                                @if ($book->book_cover != "imagemPadrao.png")
+                                    <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Deletar imagem</a></li>
+                                @endif
+                              </ul>
+                        </div>
                     </div>
+                    
                 </div>
+
+                    {{-- Book cover Modal --}}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                Adicionar capa Para o livro
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label class="form-label" for="EditFile">Capa do Livro</label>
+                                <input type="file" class="form-control" id="EditFile" name="EditFile" accept="image/*"/>
+                                <div id='bookCover'>
+                                    {{-- Book cover show --}}
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" name="addBookCover" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    {{-- Delete Book cover Modal --}}
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModal1Label">
+                                Olá
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja mesmo deletar?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" name="deleteBookCover" class="btn btn-primary">Deletar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 
-                <div class="col-5">
+                <div class="col-4">
                     {{-- Book Name --}}
                     <label class="red" id="label" for="">Título do Livro</label>
                     <h3 id="book_title">{{$book->book_name}}</h3>
@@ -63,10 +128,6 @@
                     <label class="red" id="label" for="">Gêneros</label>
                     <h3 id="genres">{{$book->genre}}</h3>
 
-
-                    {{-- sinopse modal --}}
-                    <h4 style="margin-bottom: .7em;"><a href="#" id="links">+ Sinopse</a></h4>
-
                     {{-- Save Btn --}}
                     <button type="button" class="btn btn-outline-primary" id="save_book"
                     onclick="updateBookData({{$book->id}})" style="display:none;">
@@ -81,8 +142,12 @@
 
                 </div>
                 {{-- Sinopse --}}
-                <div class="col-2">
-                    {{-- <textarea class="form-control" name="" id="" cols="40" rows="10"></textarea> --}}
+                <div class="col-4">
+                    <label class="red" id="label" for="synopsis">Sinopse</label>
+                    <p id="synopsis_text">{{$book->synopsis}}</p>
+
+                    <textarea class="form-control" name="synopsis" id="synopsis" 
+                    style="display: none;" cols="40" rows="15">{{$book->synopsis}}</textarea>
                 </div>
             </div>
         </form>
@@ -92,18 +157,41 @@
 
     </section>
     <style>
-        #book_cover{
-        border: 1px solid red; 
-        height: 26em;
-        width: 18em;
-        /* background-image: url(/assets/imgs/pj22.jpg); */
+        #bookCover{
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 17.3em;
+        height: 26em;
+        margin: 1vh 0 0 12.5vh;
+        border-radius: 10px;   
+        }
+        #change_cover{
+        position: absolute;
+        top: 52vh;
+        left: 34vh;
+        /* border: 1px solid black; */
+        border-radius: 20px;
+        background-color: #0000002b;
+        width: 1em;
+        width: 38px;
+        color: red;
+        transition: .4s;
+        }
+        #change_cover:hover{
+        color: #c00000;
+        transition: .4s;
+        }
+        #book_cover{
+        height: 26em;
+        width: 17.3em;
+        position: relative;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
         border-radius: 5px;
+        margin-bottom: 4em;
+        
         }
 
         #book_title, #writer_name, #writer_select_update, #genres{

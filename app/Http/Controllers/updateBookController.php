@@ -15,7 +15,7 @@ class updateBookController extends Controller
         $books = DB::table('books')
         ->join('writers', 'books.writer_id', '=', 'writers.id')
         ->where('books.id', '=', $id)
-        ->select('books.id', 'book_name', 'genre', 'writer_name')
+        ->select('books.id', 'book_name', 'genre', 'book_cover' , 'synopsis', 'writer_name')
         ->orderBy('book_name')->get();
 
         return view('updateBooks', compact('writers', 'books'));

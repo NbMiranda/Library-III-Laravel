@@ -245,21 +245,15 @@ function updateBook(){
     var writerSelect = document.getElementById("writer_select_update");
     writerSelect.style.display = "";
 
-    // TEXT CONTENT
-    // var selectedOption = writerSelect.options[writerSelect.selectedIndex];
-    // var selectedText = selectedOption.textContent;
-
-    // change h3 text to selected option
-    // writerName.innerHTML = selectedText;
-
-    // VALUE
-    // var selectedOption = writerSelect.value;
-    // console.log(selectedOption)
-
     // change genre to input
     var genres = document.getElementById('genres');
     genreValue = genres.innerHTML;
     genres.innerHTML = "<input type='text' name='genre' class='form-control' id='genre_text'value='" + genreValue + "' >";
+
+    // change synopsis textarea
+    document.getElementById('synopsis_text').style.display = "none";
+    document.getElementById('synopsis').style.display = "";
+    
 }
 
 // close/cancel update
@@ -290,6 +284,10 @@ function closeBook(){
     var genres = document.getElementById('genres');
     genres.innerHTML = genreValue;
 
+    // back to normal synopsis
+    document.getElementById('synopsis_text').style.display = "";
+    document.getElementById('synopsis').style.display = "none";
+
 }
 
 
@@ -299,11 +297,13 @@ async function updateBookData(id){
     var bookName = document.getElementById("book_text").value;
     var genre = document.getElementById("genre_text").value;
     var writerId = document.getElementById("writer_select_update").value;
+    var synopsisValue = document.getElementById("synopsis").value;
     
     // Change to new datas
     document.getElementById("book_title").innerHTML = bookName;
     document.getElementById("bookH1").innerHTML = bookName;
     document.getElementById("genres").innerHTML = genre;
+    document.getElementById("synopsis_text").innerHTML = synopsisValue;
 
     // change writer to selected option
     document.getElementById("writer_name").style.display = "";
@@ -322,7 +322,8 @@ async function updateBookData(id){
         id: id,
         book_name: bookName,
         genre: genre,
-        writer_id: writerId
+        writer_id: writerId,
+        synopsis: synopsisValue
     };
     console.log(updateForm);
 
@@ -348,6 +349,9 @@ async function updateBookData(id){
     document.getElementById('closeBookBtn').style.display = "none";
     document.getElementById('save_book').style.display = "none";
     document.getElementById('delete_book').style.display = "none";
+    // back to normal synopsis
+    document.getElementById('synopsis_text').style.display = "";
+    document.getElementById('synopsis').style.display = "none";
 
     
 }
@@ -393,3 +397,19 @@ if (light) {
     document.body.style.backgroundColor = "#F5F5F5";
     
 }
+
+
+/*========= IMAGE DISPLAY  =========*/
+
+const EditFile = document.querySelector("#EditFile");
+var uploadedImage = "";
+
+EditFile.addEventListener("change", function(){
+    const editReader = new FileReader();
+    console.log(editReader);
+    editReader.addEventListener("load", () => {
+        uploadedImage = editReader.result;
+        document.querySelector("#bookCover").style.backgroundImage = `url(${uploadedImage})`;
+    });
+    editReader.readAsDataURL(this.files[0]);
+})
