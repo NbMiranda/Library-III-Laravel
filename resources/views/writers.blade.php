@@ -51,7 +51,7 @@
             </tr>
 
             <form action="{{route('writers')}}" method="post">
-                    @csrf
+                @csrf
                 @php $i = $result->firstItem(); @endphp
                 @foreach ($result as $row)
                     @php $id = $row->id; @endphp
@@ -104,7 +104,7 @@
                                 {{-- Delete Btn --}}
                                 <button type="submit" class="btn btn-outline-danger" 
                                 id="delete_btn{{$id}}" value="{{$id}}" 
-                                name="writer_delete" onclick="save_data()" 
+                                name="writer_delete" 
                                 style="display:none; border:none;">
                                     <i class="fa-solid fa-trash" id="icons"></i>
                                 </button>

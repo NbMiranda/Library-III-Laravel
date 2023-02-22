@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\IndexController' => $baseDir . '/app/Http/Controllers/IndexController.php',
     'App\\Http\\Controllers\\MyAccountController' => $baseDir . '/app/Http/Controllers/MyAccountController.php',
     'App\\Http\\Controllers\\WriterController' => $baseDir . '/app/Http/Controllers/WriterController.php',
+    'App\\Http\\Controllers\\updateBookController' => $baseDir . '/app/Http/Controllers/updateBookController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckLoginMiddleware' => $baseDir . '/app/Http/Middleware/CheckLoginMiddleware.php',

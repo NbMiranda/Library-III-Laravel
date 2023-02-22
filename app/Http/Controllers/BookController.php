@@ -27,7 +27,6 @@ class BookController extends Controller
     }
     public function crud(Request $request) {
 
-
         if($request->has('book_create')){
             // dd($request->all());
             $book = new Book;
@@ -40,19 +39,19 @@ class BookController extends Controller
             return redirect()->back();
             
         }
-        // else if($request->has('writer_delete')){
-        //     $id = $request->input('writer_delete');
+        else if($request->has('delete_book')){
+            $id = $request->input('delete_book');
             
-        //     $writer = Writer::find($id);
-        //     $writer->delete();
-        //     return redirect()->back();
+            $book = Book::find($id);
+            $book->delete();
+            return redirect()->route('books');
                 
-        // }
-        // else{
-        //     $id = $request->input('id');
-        //     $writer = Writer::findOrFail($id);
-        //     $writer->update($request->all());
-        // }
+        }
+        else{
+            $id = $request->input('id');
+            $book = Book::find($id);
+            $book->update($request->all());
+        }
     }
     
 }

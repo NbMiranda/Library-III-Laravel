@@ -530,6 +530,7 @@ class ComposerStaticInitd80d142848f72feeaf8da08c0e718621
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Controllers\\MyAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/MyAccountController.php',
         'App\\Http\\Controllers\\WriterController' => __DIR__ . '/../..' . '/app/Http/Controllers/WriterController.php',
+        'App\\Http\\Controllers\\updateBookController' => __DIR__ . '/../..' . '/app/Http/Controllers/updateBookController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckLoginMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckLoginMiddleware.php',

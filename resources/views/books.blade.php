@@ -6,7 +6,7 @@
 
 @section('content')
 <section class="container">
-    
+
     <div class="text-center" id="livros_title">
         <h1>Livros</h1>
     </div>
@@ -72,24 +72,31 @@
         {{-- Read all the books --}}
         @foreach ($books as $row)
             <div class='col-lg-3 col-md-6 col-sm-12' id='book-content'>
-                {{-- Update a book button --}}
-                <h3 class='red text-center' style='height:2.3em; margin-top: 1em;' >
-                    <span id='book_title{{$row->id}}'>{{ $row->book_name }}</span>
+                
+                <h3 class='red text-center' style='margin: 1em 0 1.3em 0; word-wrap: break-word;' >
+                    {{ $row->book_name }}
+                    
                     {{-- Edit button --}}
-                    <button type="button" class="btn" style="padding-left: 1em ; border:none;"
-                    onclick="updateBook({{$row->id}})" id="updateBtn{{$row->id}}">
+                    <a class="btn btn-outlinre-dark" href="{{route("updateBook", ['id' => $row->id])}}" >
                         <i class="fa-solid fa-pen" style="font-size: 20px;"></i>                        
-                    </button>
+                    </a>
+
                 </h3>
-                <div id='book_cover' 
-                style='border:2px solid red;'>
+                               
+                {{-- Book cover --}}
+                <div id='book_cover' style='border:2px solid red;'>
                     
                 </div>
+
                 <div>
+                    {{-- Writer name --}}
                     <p class='text-center' style='margin-top:.5em;'><b>Escritor: <span class="red">
                     {{ $row->writer_name }}</span></b>
                     </p>
-                    <p class='container text-center'><b>Generos:</b> {{ $row->genre }}</p>
+
+
+                    {{-- book genre --}}
+                    <p class='container text-center' ><b>Generos:</b> {{ $row->genre }}</p>
                 </div>
             </div>
         @endforeach
