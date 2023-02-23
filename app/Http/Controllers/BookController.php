@@ -38,16 +38,25 @@ class BookController extends Controller
             $book->book_cover = "imagemPadrao.png";
             $book->synopsis = "Adicione uma sinopse ao seu livro ";
 
-
             $book->save();
-            return redirect()->back();
+            session()->flash('book_success', 'Livro inserido com sucesso');
             
+            return redirect()->back();
+
+        }
+        else if($request->has('book_update')){
+            // dd($request->all());
+            $book = Book::find($id);
+            $book->update($request->all());
+            session()->flash('book_success', 'Livro atualizado com sucesso');
         }
         else if($request->has('delete_book')){
             $id = $request->input('delete_book');
             
             $book = Book::find($id);
             $book->delete();
+
+            session()->flash('book_success', 'Livro deletado com sucesso');
             return redirect()->route('books');
                 
         }
@@ -73,11 +82,7 @@ class BookController extends Controller
             $book->update(['book_cover' => 'imagemPadrao.png']);
             return redirect()->back();
         }
-        else{
-            $id = $request->input('id');
-            $book = Book::find($id);
-            $book->update($request->all());
-        }
+
     }
     
 }

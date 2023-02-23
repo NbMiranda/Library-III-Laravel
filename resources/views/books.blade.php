@@ -7,9 +7,18 @@
 @section('content')
 <section class="container">
 
+
+    @if (session('book_success'))
+        <div class="alert alert-success alert-dismissible fade show" 
+        id="success-message" role="alert">
+            {{ session('book_success') }}
+        </div>
+    @endif
+
     <div class="text-center" id="livros_title">
         <h1>Livros</h1>
     </div>
+
 
     <div class="row">
         <div class='col-lg-3 col-md-6 col-sm-12' id='book-content'>

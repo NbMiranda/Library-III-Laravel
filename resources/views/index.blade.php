@@ -9,7 +9,7 @@
             Biblioteca 
         </h1>
         
-        <div class="row" id="index_text">
+        <div class="row dark" id="index_text">
             <div class="col-7">
                 <p class="text-center" id="paragraph">
                     Seja muito bem vindo a Biblioteca virtual em sua versão nova e 
@@ -32,18 +32,8 @@
         <h2 class="red text-center" style="margin:1.1em 0 1.1em 0;">
             Ultimos livros
         </h2>
-
-        <div class="row" style="margin-bottom:1.1em;">
-            <div class="col-4" id="book_box">
-                
-            </div>
-            <div class="col-4" id="book_box">
-
-            </div>
-            <div class="col-4" id="book_box">
-
-            </div>
-        </div>
+        {{-- {{dd($books)}} --}}
+        @include('layouts.components.carousel')
     </section>
     @include('layouts.components.footer')
 

@@ -49,5 +49,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/myAccount', [App\Http\Controllers\MyAccountController::class, 'myAccount'])->name('myAccount');
 Route::post('/myAccount', [App\Http\Controllers\MyAccountController::class, 'updatePhoto'])->name('myAccount');
 
+Route::get('/rentals', [App\Http\Controllers\RentalController::class, 'rentals'])->name('rentals');
+Route::post('/rentals', [App\Http\Controllers\RentalController::class, 'rentals'])->name('rentals');
+
 //Fallback
 Route::fallback(function(){return view('layouts.components.error');});

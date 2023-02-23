@@ -111,3 +111,7 @@ opacity: 1;
 .modal-backdrop, #exampleModal, #exampleModal1 {
     width: 100%;
 }
+
+.gray{
+    color: black;
+}

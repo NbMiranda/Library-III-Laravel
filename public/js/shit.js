@@ -323,7 +323,8 @@ async function updateBookData(id){
         book_name: bookName,
         genre: genre,
         writer_id: writerId,
-        synopsis: synopsisValue
+        synopsis: synopsisValue,
+        book_update: null
     };
     console.log(updateForm);
 
@@ -368,6 +369,7 @@ function darkMode(){
     localStorage.setItem("none", "displayNone");
     
     document.body.style.backgroundColor = "#141414"
+    document.querySelector(".dark").style.color = "whitezzzzzzz";
     
     localStorage.removeItem('light');
     localStorage.setItem('dark', 'black');
@@ -379,6 +381,8 @@ if (moonBtn) {
     document.getElementById("moonBtn").style.display = "none";
     document.getElementById("sunBtn").style.display = "";
     document.body.style.backgroundColor = "#141414";
+    document.querySelector(".dark").style.color = "white";
+
 
 }
 // light mode
@@ -413,3 +417,11 @@ EditFile.addEventListener("change", function(){
     });
     editReader.readAsDataURL(this.files[0]);
 })
+
+
+/*========= SUCCESS MESSAGE =========*/
+
+// Remove a mensagem após 5 segundos
+setTimeout(function() {
+    $('#success-message').remove();
+}, 5000);

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -12,13 +13,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('writers', function (Blueprint $table) {
-            $table->id();
-            $table->string('writer_name');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+    {   
+        // Insert datas on writers
+        // DB::table('usuarios')->insert([
+        //     'book_name' => 'Pearcy Jackson e o Ladrão de Raios',
+        //     'genre' => 'joao@email.com',
+        //     'senha' => bcrypt('senha123')
+        // ]);
     }
 
     /**
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('writers');
+        //
     }
 };

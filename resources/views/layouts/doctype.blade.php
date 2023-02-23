@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-    <link href="{{ asset('css/script.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/freak.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ URL::asset('/imgs/redbook.png') }}" type="image/x-icon">
+    <script src="{{ asset('js/custom.js') }}"></script>
 </head>
 
 <body id="body-pd" style="padding-right: 0; width:98%;">
@@ -52,7 +53,7 @@
                         </a>
                         
                         {{-- nav rentals --}}
-                        <a href="{{route('index')}}" class="nav_link {{ request()->is('index') ? 'active' : '' }}"> 
+                        <a href="{{route('rentals')}}" class="nav_link {{ request()->is('index') ? 'active' : '' }}"> 
                             <i class="bi bi-arrow-left-right"></i> 
                             <span class="nav_name">Alugueis</span> 
                         </a>
@@ -89,8 +90,12 @@
                         <span class="nav_name">Desconectar</span> 
                     </a> 
                 @endif
-            </nav>
+            </nav>           
         </div>         
+
+
+
+
         {{-- Content --}}
         @yield('content')
         <style>
@@ -116,15 +121,18 @@
             background: red;
             border-radius: 15px;
         }    
-        </style> 
+        </style>        
     </section>      
     {{-- @include('layouts.components.footer') --}}
-    <script src="{{ asset('js/mer.js') }}"></script>
+    <script src="{{ asset('js/shit.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" 
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
     </script>
 </body>
 

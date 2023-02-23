@@ -108,7 +108,7 @@
     }
 </style> --}}
 
-<footer class="text-center text-white" id="footer" style="width:101%;">
+<footer class="text-center text-white" id="footer" style="width:101%; margin-top:3em;">
   <!-- Grid container -->
   <div class=" p-4 pb-0">
     <!-- Section: Social media -->

@@ -46,7 +46,7 @@
                                 @if ($book->book_cover != "imagemPadrao.png")
                                     <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Deletar imagem</a></li>
                                 @endif
-                              </ul>
+                            </ul>
                         </div>
                     </div>
                     
@@ -129,7 +129,7 @@
                     <h3 id="genres">{{$book->genre}}</h3>
 
                     {{-- Save Btn --}}
-                    <button type="button" class="btn btn-outline-primary" id="save_book"
+                    <button type="button" name="updateBook" class="btn btn-outline-primary" id="save_book"
                     onclick="updateBookData({{$book->id}})" style="display:none;">
                         Save
                     </button>
@@ -167,7 +167,7 @@
         border-radius: 10px;   
         }
         #change_cover{
-        position: absolute;
+        position: relative;
         top: 52vh;
         left: 34vh;
         /* border: 1px solid black; */
@@ -185,7 +185,7 @@
         #book_cover{
         height: 26em;
         width: 17.3em;
-        position: relative;
+        /* position: relative; */
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
