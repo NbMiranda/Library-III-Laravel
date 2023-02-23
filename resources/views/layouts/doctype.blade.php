@@ -53,7 +53,7 @@
                         </a>
                         
                         {{-- nav rentals --}}
-                        <a href="{{route('rentals')}}" class="nav_link {{ request()->is('index') ? 'active' : '' }}"> 
+                        <a href="{{route('rentals')}}" class="nav_link {{ request()->is('rentals') ? 'active' : '' }}"> 
                             <i class="bi bi-arrow-left-right"></i> 
                             <span class="nav_name">Alugueis</span> 
                         </a>
