@@ -14,7 +14,8 @@ class Book extends Model
         'genre', 
         'book_cover', 
         'writer_id', 
-        'synopsis'
+        'synopsis',
+        'status'
     ];
 
 }

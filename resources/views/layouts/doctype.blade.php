@@ -12,12 +12,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-    <link href="{{ asset('css/freak.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/ap.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ URL::asset('/imgs/redbook.png') }}" type="image/x-icon">
-    <script src="{{ asset('js/custom.js') }}"></script>
 </head>
 
 <body id="body-pd" style="padding-right: 0; width:98%;">
+
+    @if (session('book_success'))
+        <div class="alert alert-success alert-dismissible fade show" 
+        id="success-message" role="alert">
+            {{ session('book_success') }}
+        </div>
+    @endif
+
     <section id="dark" style="width: 101%;">
         {{-- Sidebar --}}
         <header class="header" id="header">
@@ -93,7 +100,12 @@
             </nav>           
         </div>         
 
+        <script>
+            setTimeout(function() {
+                $('#success-message').remove();
+            }, 5000);
 
+        </script>
 
 
         {{-- Content --}}
@@ -124,7 +136,7 @@
         </style>        
     </section>      
     {{-- @include('layouts.components.footer') --}}
-    <script src="{{ asset('js/shit.js') }}"></script>
+    <script src="{{ asset('js/ray.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>

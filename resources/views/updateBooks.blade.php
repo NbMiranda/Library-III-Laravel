@@ -7,7 +7,7 @@
     @php
         $book = $books[0]
     @endphp
-
+    
     <section class="container">
         <h1 class="red text-center" style="margin:2em;"><i id="bookH1">{{$book->book_name}}</i>
             {{-- Update Btn --}}
@@ -152,11 +152,48 @@
             </div>
         </form>
 
+        {{-- rent form --}}
+        @if ($book->status == "rentable")
+            <form action="{{route('rentals')}}" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{$book->id}}">
+                
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        {{-- <input type="hidden" value="2"> --}}
+                        {{-- Rent Btn --}}
+                        <button type="submit" class="btn btn-primary" id="rentBtn"
+                        name="rent">Alugue este livro!</button>
+                    </div>
+                </div>
+            </form>
+        @endif
 
-
-
+        @foreach ($rentals as $line)
+            @if ($book->id == $line->book_id && auth()->user()->id == $line->user_id && $line->return_in == null)
+                {{-- return form --}}
+                <form action="{{route('rentals')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$book->id}}">
+                    
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary" id="rentBtn"
+                            name="return">Devolva este livro!</button>
+                        </div>
+                    </div>
+                </form>                
+            @endif
+        @endforeach
+        
     </section>
     <style>
+        #rentBtn{
+            position: relative;
+            bottom: 14vh;
+        }
         #bookCover{
         background-position: center;
         background-size: contain;
@@ -168,8 +205,8 @@
         }
         #change_cover{
         position: relative;
-        top: 52vh;
-        left: 34vh;
+        top: 27vh;
+        left: 18vh;
         /* border: 1px solid black; */
         border-radius: 20px;
         background-color: #0000002b;

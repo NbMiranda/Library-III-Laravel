@@ -18,7 +18,7 @@ class BookController extends Controller
         
         $books = DB::table('books')
         ->join('writers', 'books.writer_id', '=', 'writers.id')
-        ->select('books.id', 'book_name', 'book_cover' , 'genre', 'writer_name')
+        ->select('books.id', 'book_name', 'book_cover', 'genre', 'writer_name')
         ->orderBy('book_name')->get();
         
 
@@ -37,6 +37,7 @@ class BookController extends Controller
             $book->genre = $request->input('genre');
             $book->book_cover = "imagemPadrao.png";
             $book->synopsis = "Adicione uma sinopse ao seu livro ";
+            $book->status = "rentable";
 
             $book->save();
             session()->flash('book_success', 'Livro inserido com sucesso');

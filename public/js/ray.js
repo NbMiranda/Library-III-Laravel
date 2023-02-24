@@ -231,6 +231,7 @@ function updateBook(){
     document.getElementById('closeBookBtn').style.display = "";
     document.getElementById('save_book').style.display = "";
     document.getElementById('delete_book').style.display = "";
+    document.getElementById('rentBtn').style.display = "none";
 
 
     // change title to input
@@ -271,6 +272,8 @@ function closeBook(){
     document.getElementById('closeBookBtn').style.display = "none";
     document.getElementById('save_book').style.display = "none";
     document.getElementById('delete_book').style.display = "none";
+    document.getElementById('rentBtn').style.display = "";
+
 
     // change input to genres 
     var bookTitle = document.getElementById('book_title');
@@ -350,6 +353,7 @@ async function updateBookData(id){
     document.getElementById('closeBookBtn').style.display = "none";
     document.getElementById('save_book').style.display = "none";
     document.getElementById('delete_book').style.display = "none";
+    document.getElementById('rentBtn').style.display = "";
     // back to normal synopsis
     document.getElementById('synopsis_text').style.display = "";
     document.getElementById('synopsis').style.display = "none";
@@ -368,8 +372,8 @@ function darkMode(){
     
     localStorage.setItem("none", "displayNone");
     
-    document.body.style.backgroundColor = "#141414"
-    document.querySelector(".dark").style.color = "whitezzzzzzz";
+    document.body.style.backgroundColor = "#5C5C5C"
+    // document.querySelector(".dark").style.color = "white";
     
     localStorage.removeItem('light');
     localStorage.setItem('dark', 'black');
@@ -380,8 +384,8 @@ let moonBtn = localStorage.getItem('dark');
 if (moonBtn) {
     document.getElementById("moonBtn").style.display = "none";
     document.getElementById("sunBtn").style.display = "";
-    document.body.style.backgroundColor = "#141414";
-    document.querySelector(".dark").style.color = "white";
+    document.body.style.backgroundColor = "#5C5C5C";
+    // document.querySelector(".dark").style.color = "white";
 
 
 }
@@ -403,6 +407,15 @@ if (light) {
 }
 
 
+/*========= SUCCESS MESSAGE =========*/
+
+// Remove a mensagem após 5 segundos
+setTimeout(function() {
+    $('#success-message').remove();
+}, 5000);
+
+
+
 /*========= IMAGE DISPLAY  =========*/
 
 const EditFile = document.querySelector("#EditFile");
@@ -418,10 +431,3 @@ EditFile.addEventListener("change", function(){
     editReader.readAsDataURL(this.files[0]);
 })
 
-
-/*========= SUCCESS MESSAGE =========*/
-
-// Remove a mensagem após 5 segundos
-setTimeout(function() {
-    $('#success-message').remove();
-}, 5000);

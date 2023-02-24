@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('genre');
             $table->string('secondary_genre')->nullable();
             $table->longText('synopsis')->nullable();
+            $table->string('status',25);
             $table->timestamps();
         });
     }

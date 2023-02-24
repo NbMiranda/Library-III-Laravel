@@ -1,3 +1,6 @@
+<h2 class="red text-center" style="margin:1.1em 0 1.1em 0;">
+    Ultimos livros
+</h2>
 <section>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">

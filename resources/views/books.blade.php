@@ -8,12 +8,12 @@
 <section class="container">
 
 
-    @if (session('book_success'))
+    {{-- @if (session('book_success'))
         <div class="alert alert-success alert-dismissible fade show" 
         id="success-message" role="alert">
             {{ session('book_success') }}
         </div>
-    @endif
+    @endif --}}
 
     <div class="text-center" id="livros_title">
         <h1>Livros</h1>
@@ -113,7 +113,7 @@
     
 </section>
 @include('layouts.components.footer')
-    <style>
+    {{-- <style>
         .card-body{
             background-color: #F5F5F5;
             border-color:red;
@@ -147,5 +147,5 @@
             justify-content: center;
             align-items: center;
         }
-    </style>
+    </style> --}}
 @endsection

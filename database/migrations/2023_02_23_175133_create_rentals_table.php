@@ -16,8 +16,9 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('alugado_em');
-            $table->dateTime('expira_em');
+            $table->dateTime('rented_in')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('expires_in');
+            $table->dateTime('return_in')->nullable();
             // book foreign
             $table->unsignedBigInteger('book_id');
             $table->foreign('book_id')->references('id')->on('books');
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
     }
 
     /**

@@ -4,6 +4,7 @@
 
 
 @section('content')
+
     <section class="">
         <h1 class="red text-center" style="margin:1.1em;">
             Biblioteca 
@@ -27,13 +28,10 @@
             </div>
         </div>
         
-        {{-- Carousel last 9 books  --}}
-
-        <h2 class="red text-center" style="margin:1.1em 0 1.1em 0;">
-            Ultimos livros
-        </h2>
-        {{-- {{dd($books)}} --}}
-        @include('layouts.components.carousel')
+        @if ($books->count() == 9)
+            @include('layouts.components.carousel')            
+        @endif
+        
     </section>
     @include('layouts.components.footer')
 

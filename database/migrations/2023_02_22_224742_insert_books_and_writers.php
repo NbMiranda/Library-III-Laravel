@@ -15,11 +15,13 @@ return new class extends Migration
     public function up()
     {   
         // Insert datas on writers
-        // DB::table('usuarios')->insert([
-        //     'book_name' => 'Pearcy Jackson e o Ladrão de Raios',
-        //     'genre' => 'joao@email.com',
-        //     'senha' => bcrypt('senha123')
-        // ]);
+        DB::table('users')->insert([
+            'name' => 'Leader',
+            'email' => 'root@root',
+            'user_image' => 'redperson.png',
+            'password' => bcrypt('rootroot')
+        ]);
+
     }
 
     /**
