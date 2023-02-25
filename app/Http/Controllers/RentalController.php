@@ -57,9 +57,9 @@ class RentalController extends Controller
             $book->save();
 
             
-            $return = Rental::where('book_id', $id)->latest()->first();
+            $return = Rental::where('book_id', $id)->last();
             // dd($return);
-            $return->return_in = DB::raw('CURRENT_TIMESTAMP');
+            $return->return_in =  DB::raw('CURRENT_TIMESTAMP');
             $return->save();
 
             session()->flash('book_success', 'Livro devolvido com sucesso');

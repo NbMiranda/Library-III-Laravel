@@ -126,6 +126,10 @@ opacity: 1;
     font-weight: 600;
 }
 
+.primary{
+    color:#0101cd;
+    font-weight: 600;
+}
 .card-body{
     background-color: #F5F5F5;
     border-color:red;

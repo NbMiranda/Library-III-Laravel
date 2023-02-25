@@ -8,13 +8,25 @@
         $book = $books[0]
     @endphp
     
+    @if (session('book_fail'))
+        <div class="alert alert-danger alert-dismissible fade show" 
+        id="fail-message" role="alert" style="width: 42vh;">
+            Livro não pode ser deletado porque está alugado,<br>
+            devolva o livro para deleta-lo
+        </div>
+    @endif
+    
     <section class="container">
         <h1 class="red text-center" style="margin:2em;"><i id="bookH1">{{$book->book_name}}</i>
-            {{-- Update Btn --}}
-            <button type="button" class="btn" id="updateBookBtn" onclick="updateBook()">
-                <i class="fa-sharp fa-solid fa-pen" id="icons"></i>
-            </button>
-
+            {{-- checking if the book is rented to able to edit --}}
+            @if ($book->status == "rentable")
+                {{-- Update Btn --}}
+                <button type="button" class="btn" id="updateBookBtn" onclick="updateBook()">
+                    <i class="fa-sharp fa-solid fa-pen" id="icons"></i>
+                </button>
+            @endif
+            
+            
             {{-- Close Btn --}}
             <button type="button" class="btn" id="closeBookBtn" style="display:none;" 
             onclick="closeBook()">
@@ -30,24 +42,28 @@
                 {{-- Book cover --}}
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <div id="book_cover" style="background-image: url({{ URL::asset('/imgs/book_covers/'.$book->book_cover) }}) ;">
-                        <div id="edit_btn">
-                            {{-- Book cover Btn --}}
-                            <button class="btn btn-link " type="button" id="change_cover"  data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
-                            {{-- Dropdown menu --}}
-                            <ul class="dropdown-menu">
-                                <li>
-                                    {{-- button trigger Modal --}}
-                                    <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Adicionar Capa 
-                                    </a>
-                                </li>
-                                @if ($book->book_cover != "imagemPadrao.png")
-                                    <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Deletar imagem</a></li>
-                                @endif
-                            </ul>
-                        </div>
+                        {{-- checking if the book is rented to able to edit --}}
+                        @if ($book->status == "rentable")
+                            <div id="edit_btn">
+                                {{-- Book cover Btn --}}
+                                <button class="btn btn-link " type="button" id="change_cover"  data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                {{-- Dropdown menu --}}
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        {{-- button trigger Modal --}}
+                                        <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Adicionar Capa 
+                                        </a>
+                                    </li>
+                                    @if ($book->book_cover != "imagemPadrao.png")
+                                        <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Deletar imagem</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
+                        
                     </div>
                     
                 </div>
@@ -189,6 +205,14 @@
         @endforeach
         
     </section>
+
+    <script>
+        setTimeout(function() {
+            $('#fail-message').remove();
+        }, 5000);
+
+    </script>
+
     <style>
         #rentBtn{
             position: relative;

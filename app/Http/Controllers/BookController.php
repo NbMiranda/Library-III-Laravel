@@ -52,13 +52,22 @@ class BookController extends Controller
             session()->flash('book_success', 'Livro atualizado com sucesso');
         }
         else if($request->has('delete_book')){
+
             $id = $request->input('delete_book');
             
             $book = Book::find($id);
-            $book->delete();
 
-            session()->flash('book_success', 'Livro deletado com sucesso');
-            return redirect()->route('books');
+            if($book->status == "rented") {
+                session()->flash('book_fail', 'erro');
+                return redirect()->back();
+            }
+            else{
+                $book->delete();
+
+                session()->flash('book_success', 'Livro deletado com sucesso');
+                return redirect()->route('books');
+            }
+            
                 
         }
         else if($request->has('addBookCover')){
