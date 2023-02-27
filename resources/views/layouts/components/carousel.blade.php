@@ -56,7 +56,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title red"><b>{{$books[3]->book_name}}</b></h5>
-                            <p class="card-text ">
+                            <p class="card-text " style="color:black;">
                                 <b>Genêros:</b> {{$books[3]->genre}}
                             </p>
                         </div>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title red"><b>{{$books[4]->book_name}}</b></h5>
-                            <p class="card-text gray">
+                            <p class="card-text" style="color:black;">
                                 <b>Genêros:</b> {{$books[4]->genre}}
                             </p>
                         </div>

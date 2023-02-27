@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use \App\Models\Book;
 use \App\Models\Rental;
@@ -26,13 +27,27 @@ class RentalController extends Controller
 
         $id = $request->input('id');
 
+
         // RENT
         if($request->has('rent')){
+
+        // validando
+        if (auth()->user()->rented_book == 5){
+            session()->flash('book_fail', 'Você pode alugar no máximo 5 livros, devolva um livro para alugar outro');
+            return redirect()->back();
+        }
                     
         // Insert status on books table
         $book = Book::find($id);
         $book->status = "rented";
         
+        // giving 1 book to rented_book
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $before = $user->rented_book;
+        $user->rented_book = $before + 1;
+        
+
         // Inserting datas on rentals table
         $rent = new Rental;
         
@@ -42,6 +57,7 @@ class RentalController extends Controller
 
         // Saving...
         $book->save();
+        $user->save();
         $rent->save();
 
         session()->flash('book_success', 'Livro alugado com sucesso');
@@ -56,14 +72,23 @@ class RentalController extends Controller
             $book->status = "rentable";
             $book->save();
 
-            
-            $return = Rental::where('book_id', $id)->last();
+            // taking 1 book from rented_book
+            $user_id = auth()->user()->id;
+            $user = User::find($user_id);
+            $before = $user->rented_book;
+            $user->rented_book = $before - 1;
+            $user->save();
+
+            // add return date
+            $return = Rental::where('book_id', $id)->latest()->first();
             // dd($return);
             $return->return_in =  DB::raw('CURRENT_TIMESTAMP');
             $return->save();
 
+            // verificando o redirecionamento
+
             session()->flash('book_success', 'Livro devolvido com sucesso');
-            return redirect()->route('rentals');
+            return redirect()->back();
         }
 
 

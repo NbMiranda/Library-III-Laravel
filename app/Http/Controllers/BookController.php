@@ -58,11 +58,12 @@ class BookController extends Controller
             $book = Book::find($id);
 
             if($book->status == "rented") {
-                session()->flash('book_fail', 'erro');
+                session()->flash('book_fail', 'Livro não pode ser deletado porque está alugado,
+                devolva o livro para deleta-lo');
                 return redirect()->back();
             }
             else{
-                $book->delete();
+                $book->forceDelete();
 
                 session()->flash('book_success', 'Livro deletado com sucesso');
                 return redirect()->route('books');

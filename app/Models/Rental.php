@@ -13,6 +13,7 @@ class Rental extends Model
         'user_id',
         'book_id',
         'return_in',
-        'expires_in'
+        'expires_in',
+        'rented_book'
     ];
 }

@@ -4,29 +4,75 @@
     
 @section('content')
     <section class="container">
-        <div id="user_content">
-            <div id="user_data_image" style="background-image: url({{ URL::asset('/imgs/user_images/'.$userImage) }}) ;">
-                <div id="edit_btn">
-                    <button class="btn btn-link" type="button" id="change_image" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                    
-                    {{-- Dropdown menu --}}
-                    <ul class="dropdown-menu">
-                        <li>
-                            {{-- button trigger Modal --}}
-                            <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Adicionar Foto de Perfil 
-                            </a>
-                        </li>
-                        @if (auth()->user()->user_image != "redperson.png")
-                            <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Remover imagem</a></li>
-                        @endif
-                      </ul>
+        <div class="row" style="margin-bottom: 22.7vh;">
+            <div class="col-3" id="user_content">
+                <div id="user_data_image" style="background-image: url({{ URL::asset('/imgs/user_images/'.$userImage) }}) ;">
+                    <div id="edit_btn">
+                        <button class="btn btn-link" type="button" id="change_image" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        
+                        {{-- Dropdown menu --}}
+                        <ul class="dropdown-menu">
+                            <li>
+                                {{-- button trigger Modal --}}
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Adicionar Foto de Perfil 
+                                </a>
+                            </li>
+                            @if (auth()->user()->user_image != "redperson.png")
+                                <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Remover imagem</a></li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
+
+                <h3 style="margin-left: 6.5em;">{{ auth()->user()->name }}</h3>
             </div>
 
-            <h4 class="text-center">{{ auth()->user()->name }}</h4>
+            <div class="col-2"></div>
+
+            {{-- rented books --}}
+
+            <div class="col-sm-12 col-md-12 col-lg-7 text-center" style="margin-top: 4vh;">
+                <h3 class="red" style="padding: 1em;">Livros Alugados por {{auth()->user()->name}}</h3>
+                {{-- @foreach ($books as $item) --}}
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome do Livro</th>
+                        {{-- <th scope="col">Expira em</th> --}}
+                        <th scope="col">Devolva o livro</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @for ($i = 0; $i < $books->count(); $i++)
+                            <tr>
+                                <th scope="row">{{$i+1}}</th>
+                                <td>{{$books[$i]->book_name}}</td>
+                                {{-- <td>days</td> --}}
+                                {{-- Returna book btn --}}
+                                <td>
+                                    
+                                    <form action="{{route('rentals')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$books[$i]->id}}">
+                                        
+                                        <div class="row">
+                                            <div class="col-4"></div>
+                                            <div class="col-4">
+                                                <button type="submit" class="btn btn-outline-danger" id="returnBtn"
+                                                name="return">Devolva este livro!</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>  
+                        @endfor
+                    </tbody>
+                  </table>
+            </div>
         </div>
                     
         {{-- Modal --}}
@@ -63,16 +109,16 @@
                 <div class="modal-content">
                     <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModal1Label">
-                        Olá
+                        Confirmar exclusão
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Deseja mesmo remover?
+                        Deseja mesmo remover imagem de perfil?
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" name="deleteUserImage" class="btn btn-primary">Remover</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" name="deleteUserImage" class="btn btn-danger">Remover</button>
                     </div>
                 </div>
                 </div>
@@ -82,6 +128,18 @@
     </section>
     @include('layouts.components.footer')
     <style>
+        #returnBtn{
+            width: 25vh;
+            height: 5vh;
+            color:red;
+            transition:.4s;
+        }
+        #returnBtn:hover{
+            background:none;
+            color: #c00000;
+            border-color: #c00000;
+            transition:.4s;
+        }
         #userImage{
             height: 40vh;
             border: 3px solid red;
@@ -95,15 +153,15 @@
         }
         #user_content{
             /* background-color: red; */
-            height: 91vh !important;
-            width: 24em;
+            /* height: 91vh !important; */
+            /* width: 24em; */
             /* margin-top: 2em; */
         }
         #user_data_image{
             border-radius: 50%;
             width: 20em;
             height: 20em;
-            margin: 0 0 1em 2.5em;
+            margin: 3em 0 1em 3.8em;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;

@@ -4,7 +4,7 @@
     
 
 @section('content')
-
+{{-- {{dd($users)}} --}}
 <section class="container">
 
     {{-- rent success message --}}
@@ -30,7 +30,7 @@
                 <div id='book_cover' style='background-image: url({{ URL::asset('/imgs/book_covers/'.$row->book_cover) }});'>
                     {{-- rent button --}}
                     <a class="btn btn-outlinre-dark" href="{{route("updateBook", ['id' => $row->id])}}" id="rentLink">
-                        <i class="bi bi-arrow-left-right" style="font-size: 20px;"></i>                        
+                        <i class="bi bi-arrow-left-right" id="links" style="font-size: 20px;"></i>                        
                     </a>
                 </div>
 
@@ -47,6 +47,7 @@
                     {{-- status --}}
                     @if ($row->status == "rentable")
                         <p class="text-center"><b>Status: </b><span class="avaliable">Disponível</span></p>
+                                        
                     @else
                         <p class="text-center"><b>Status: </b><span class="not-avaliable">Indisponível</span></p>
                     @endif
@@ -59,8 +60,11 @@
 <style>
     #rentLink{
         position: relative;
-        top: 27vh;
-        left: 15vh;
+        top: 26.7vh;
+        left: 16vh;
+        border: none;
+        background-color:#00000012; 
+        border-radius: 20px;
     }
 </style>
 

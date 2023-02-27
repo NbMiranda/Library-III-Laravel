@@ -13,13 +13,18 @@
         <div class="row dark" id="index_text">
             <div class="col-7">
                 <p class="text-center" id="paragraph">
-                    Seja muito bem vindo a Biblioteca virtual em sua versão nova e 
+                    Seja muito bem-vindo a Biblioteca virtual em sua versão nova e 
                     melhorada, faça o <a href="{{ route('login') }}" id="links">Login</a>
                     para ter acesso total a biblioteca. <br> <br>
-                    Aqui caso você queira cadastrar um livro ou ver todoas os
+                    Aqui caso você queira cadastrar um livro ou ver todos os
                     livros cadastrados é só ir em 
                     <a href="{{ route('books') }}" id="links">Livros</a>, e cadastrar seu livro.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias assumenda pasjoida dajsoidaisjd kansdjas9jd
+                    <br><br>
+
+                    Você também pode alugar um livro em <a href="{{route('rentals')}}" id="links">Aluguéis</a>, 
+                    pode-se alugar até no máximo 5 livros, 
+                    você pode acompanhar seus livros alugados
+                    na área do usuário.
                 </p>    
             </div>
             <div class="col-1"></div>

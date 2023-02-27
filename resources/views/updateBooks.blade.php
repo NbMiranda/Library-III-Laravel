@@ -11,8 +11,7 @@
     @if (session('book_fail'))
         <div class="alert alert-danger alert-dismissible fade show" 
         id="fail-message" role="alert" style="width: 42vh;">
-            Livro não pode ser deletado porque está alugado,<br>
-            devolva o livro para deleta-lo
+            {{session('book_fail')}}
         </div>
     @endif
     
@@ -99,16 +98,16 @@
                         <div class="modal-content">
                             <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModal1Label">
-                                Olá
+                                Confirmar exclusão
                             </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Deseja mesmo deletar?
+                                Deseja mesmo deletar a capa do livro?
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" name="deleteBookCover" class="btn btn-primary">Deletar</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" name="deleteBookCover" class="btn btn-danger">Deletar</button>
                             </div>
                         </div>
                         </div>
@@ -124,7 +123,7 @@
                     <h3 id="writer_name">{{$book->writer_name}}</h3>
 
                     {{-- writer select --}}
-                    <select name="writer_id" id="writer_select_update" class="form-select" style="display:none; " aria-label="Default select example" required>
+                    <select name="writer_id" id="writer_select_update" class="form-select" style="display:none; " aria-label="Default select example">
                         
                         <option value="">-- Selecione o Escritor --</option> 
                         @foreach ($writers as $item)
@@ -145,9 +144,9 @@
                     <h3 id="genres">{{$book->genre}}</h3>
 
                     {{-- Save Btn --}}
-                    <button type="button" name="updateBook" class="btn btn-outline-primary" id="save_book"
+                    <button type="button" name="updateBook" class="btn btn-outline-success" id="save_book"
                     onclick="updateBookData({{$book->id}})" style="display:none;">
-                        Save
+                        <i class="fa-sharp fa-solid fa-floppy-disk" id="icons"></i> Salvar
                     </button>
 
                     {{-- Delete Btn --}}
@@ -167,7 +166,7 @@
                 </div>
             </div>
         </form>
-
+        {{-- {{dd(auth()->user()->rented_book)}} --}}
         {{-- rent form --}}
         @if ($book->status == "rentable")
             <form action="{{route('rentals')}}" method="post">
@@ -179,7 +178,7 @@
                     <div class="col-4">
                         {{-- <input type="hidden" value="2"> --}}
                         {{-- Rent Btn --}}
-                        <button type="submit" class="btn btn-primary" id="rentBtn"
+                        <button type="submit" class="btn btn-info" id="rentBtn"
                         name="rent">Alugue este livro!</button>
                     </div>
                 </div>
@@ -196,7 +195,7 @@
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary" id="rentBtn"
+                            <button type="submit" class="btn btn-warning" id="rentBtn"
                             name="return">Devolva este livro!</button>
                         </div>
                     </div>
