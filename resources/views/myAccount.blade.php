@@ -36,7 +36,7 @@
 
             <div class="col-sm-12 col-md-12 col-lg-7 text-center" style="margin-top: 4vh;">
                 <h3 class="red" style="padding: 1em;">Livros Alugados por {{auth()->user()->name}}</h3>
-                {{-- @foreach ($books as $item) --}}
+                
                 <table class="table">
                     <thead>
                       <tr>
@@ -51,10 +51,9 @@
                             <tr>
                                 <th scope="row">{{$i+1}}</th>
                                 <td>{{$books[$i]->book_name}}</td>
-                                {{-- <td>days</td> --}}
-                                {{-- Returna book btn --}}
+                                
                                 <td>
-                                    
+                                    {{-- return a book form --}}
                                     <form action="{{route('rentals')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="id" value="{{$books[$i]->id}}">
@@ -127,74 +126,8 @@
 
     </section>
     @include('layouts.components.footer')
-    <style>
-        #returnBtn{
-            width: 25vh;
-            height: 5vh;
-            color:red;
-            transition:.4s;
-        }
-        #returnBtn:hover{
-            background:none;
-            color: #c00000;
-            border-color: #c00000;
-            transition:.4s;
-        }
-        #userImage{
-            height: 40vh;
-            border: 3px solid red;
-            width: 40vh;
-            border-radius: 53%;
-            margin-top: 5vh;
-            margin-left: 9vh;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        #user_content{
-            /* background-color: red; */
-            /* height: 91vh !important; */
-            /* width: 24em; */
-            /* margin-top: 2em; */
-        }
-        #user_data_image{
-            border-radius: 50%;
-            width: 20em;
-            height: 20em;
-            margin: 3em 0 1em 3.8em;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            /* position: relative; */
-        }
-        #edit_btn{
-            
-            width: 5em;
-            height: 5em;
-            
-            /* background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover; */
-            position: relative; 
-        }
-        #change_image{
-            position: absolute;
-            top: 37vh;
-            left: 32vh;
-            /* border: 1px solid black; */
-            border-radius: 20px;
-            background-color: #0000002b;
-            width: 1em;
-            width: 38px;
-            color: red;
-            transition: .4s;
-        }
-        #change_image:hover{
-            color: #b40101;
-            transition: .4s;
-
-        }
-    </style>
+    
+    {{-- Image display --}}
     <script>
         const userImage = document.querySelector("#user_image");
         var uploadedImage = "";

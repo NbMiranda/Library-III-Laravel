@@ -3,22 +3,12 @@
 @section('title', 'Livros')
     
 
-
 @section('content')
 <section class="container">
-
-
-    {{-- @if (session('book_success'))
-        <div class="alert alert-success alert-dismissible fade show" 
-        id="success-message" role="alert">
-            {{ session('book_success') }}
-        </div>
-    @endif --}}
 
     <div class="text-center" id="livros_title">
         <h1>Livros</h1>
     </div>
-
 
     <div class="row">
         <div class='col-lg-3 col-md-6 col-sm-12' id='book-content'>
@@ -89,12 +79,11 @@
                     <a class="btn btn-outlinre-dark" href="{{route("updateBook", ['id' => $row->id])}}" >
                         <i class="fa-solid fa-pen" style="font-size: 20px;"></i>                        
                     </a>
-
                 </h4>
                                
                 {{-- Book cover --}}
                 <div id='book_cover' style='background-image: url({{ URL::asset('/imgs/book_covers/'.$row->book_cover) }});'>
-                    
+                    {{-- book backgound display --}}
                 </div>
 
                 <div>
@@ -102,7 +91,6 @@
                     <p class='text-center' style='margin-top:.5em;'><b>Escritor: <span class="red">
                     {{ $row->writer_name }}</span></b>
                     </p>
-
 
                     {{-- book genre --}}
                     <p class='container text-center' ><b>Generos:</b> {{ $row->genre }}</p>
@@ -113,39 +101,5 @@
     
 </section>
 @include('layouts.components.footer')
-    {{-- <style>
-        .card-body{
-            background-color: #F5F5F5;
-            border-color:red;
-        }
-        #livros_title{
-            margin-bottom: 5vh;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            height: 10em;
-            /* background-position:10% 43%; */
-            background-repeat: no-repeat;
-            /* background-size: cover; */
-            background-position: 53% 66%;
-            background-image:url({{ URL::asset('/imgs/booksbackground3.png') }});
-            
-        }
-        #livros_title h1{
-            padding: 1.5em;
-            color: red;
-            font-weight: 600;
-        }
-        #book_cover{
-            /* border: 1px solid red;  */
-            height: 24em;
-            width: auto;
-            /* background-image: url(/assets/imgs/pj22.jpg); */
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style> --}}
+
 @endsection

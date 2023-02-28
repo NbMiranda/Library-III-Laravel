@@ -21,13 +21,6 @@ class updateBookController extends Controller
         ->select('books.id', 'book_name', 'genre', 'status' ,'book_cover' , 'synopsis', 'writer_name')
         ->orderBy('book_name')->get();
 
-        // $books = DB::table('rentals')
-        // ->join('books', 'rentals.book_id', '=', 'books.id')
-        // ->join('writers', 'books.writer_id', '=', 'writers.id')
-        // ->where('rentals.book_id', '=', $id)
-        // ->select('books.id', 'book_name', 'book_cover', 'status', 'genre', 'writer_name', 'writers.id as writer_id')
-        // ->orderBy('book_name')
-        // ->get();
 
         return view('updateBooks', compact('writers', 'books', 'rentals'));
     }

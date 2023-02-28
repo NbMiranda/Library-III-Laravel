@@ -139,7 +139,8 @@ async function save_data(id){
 
     var dataForm = {
         id: id,
-        writer_name: writerNameValue
+        writer_name: writerNameValue,
+        writer_update: null
     };
     console.log(dataForm);
 

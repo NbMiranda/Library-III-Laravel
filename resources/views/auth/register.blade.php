@@ -63,7 +63,7 @@
                     {{-- submit form button (login) --}}
                     <button type="submit" class="btn btn-danger"
                     style="margin-top: .8em">
-                    {{ __('Register') }}
+                        Cadastrar
                     </button>
                 </form>
             </div>

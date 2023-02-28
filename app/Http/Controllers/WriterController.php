@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use \App\Models\Writer;
 class WriterController extends Controller
 {
+    // login validation
     public function __construct(){
         $this->middleware('validation');
         
     }
+
+    // writers select with pagination
     public function writers(){
         $arrayId = Writer::pluck('id')->all();
 
@@ -20,11 +23,11 @@ class WriterController extends Controller
 
         return view('writers', compact('result', 'arrayId', 'firstItem', 'count'));
     }
-    // Create writer
+
+    // CRUD writers
     public function crud(Request $request){
-        // dd($request);
-
-
+        
+        // DELETE WRITER
         if($request->has('writer_delete')){
             $id = $request->input('writer_delete');
             
@@ -33,6 +36,8 @@ class WriterController extends Controller
             return redirect()->back();
                 
         }
+
+        // CREATE WRITER
         else if($request->has('writer_create')){
             // dd($request->all());
             $writer = new Writer;
@@ -41,7 +46,10 @@ class WriterController extends Controller
             return redirect()->back();
             
         }
-        else{
+
+        // UPDATE WRITER
+        else if($request->has('writer_update')){
+            
             $id = $request->input('id');
             $writer = Writer::findOrFail($id);
             $writer->update($request->all());

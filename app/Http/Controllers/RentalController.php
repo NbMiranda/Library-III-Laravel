@@ -28,7 +28,7 @@ class RentalController extends Controller
         $id = $request->input('id');
 
 
-        // RENT
+        // RENT A BOOK
         if($request->has('rent')){
 
         // validando
@@ -64,33 +64,30 @@ class RentalController extends Controller
         return redirect()->route('rentals');
         }
 
-        // Return a book
+        // RETURN A BOOK
         else if($request->has('return')){
 
             // changin book status
             $book = Book::find($id);
             $book->status = "rentable";
-            $book->save();
-
+            
             // taking 1 book from rented_book
             $user_id = auth()->user()->id;
             $user = User::find($user_id);
             $before = $user->rented_book;
             $user->rented_book = $before - 1;
-            $user->save();
-
+            
             // add return date
             $return = Rental::where('book_id', $id)->latest()->first();
-            // dd($return);
             $return->return_in =  DB::raw('CURRENT_TIMESTAMP');
+            
+            // Saving...
+            $book->save();
+            $user->save();
             $return->save();
-
-            // verificando o redirecionamento
-
+            
             session()->flash('book_success', 'Livro devolvido com sucesso');
             return redirect()->back();
         }
-
-
     }
 }

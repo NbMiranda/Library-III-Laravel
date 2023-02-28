@@ -40,7 +40,7 @@
             <div class="row">
                 {{-- Book cover --}}
                 <div class="col-sm-12 col-md-12 col-lg-4">
-                    <div id="book_cover" style="background-image: url({{ URL::asset('/imgs/book_covers/'.$book->book_cover) }}) ;">
+                    <div id="book_cover_ub" style="background-image: url({{ URL::asset('/imgs/book_covers/'.$book->book_cover) }}) ;">
                         {{-- checking if the book is rented to able to edit --}}
                         @if ($book->status == "rentable")
                             <div id="edit_btn">
@@ -212,52 +212,6 @@
 
     </script>
 
-    <style>
-        #rentBtn{
-            position: relative;
-            bottom: 14vh;
-        }
-        #bookCover{
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 17.3em;
-        height: 26em;
-        margin: 1vh 0 0 12.5vh;
-        border-radius: 10px;   
-        }
-        #change_cover{
-        position: relative;
-        top: 27vh;
-        left: 18vh;
-        /* border: 1px solid black; */
-        border-radius: 20px;
-        background-color: #0000002b;
-        width: 1em;
-        width: 38px;
-        color: red;
-        transition: .4s;
-        }
-        #change_cover:hover{
-        color: #c00000;
-        transition: .4s;
-        }
-        #book_cover{
-        height: 26em;
-        width: 17.3em;
-        /* position: relative; */
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        border-radius: 5px;
-        margin-bottom: 4em;
-        
-        }
-
-        #book_title, #writer_name, #writer_select_update, #genres{
-            margin-bottom: 1.2em;
-        }
-    </style>
 @endsection
 
 

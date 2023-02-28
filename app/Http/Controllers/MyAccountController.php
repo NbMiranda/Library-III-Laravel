@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class MyAccountController extends Controller
 {
+    // login validation 
     public function __construct(){
         $this->middleware('validation');
     }
@@ -27,7 +28,9 @@ class MyAccountController extends Controller
 
     public function updatePhoto(Request $request){
         
+        // switch/case to add/delete a user image
         switch (true) {
+            // ADD IMAGE
             case $request->has('addUserImage'):
                 $requestImage = $request->file('user_image');
 
@@ -46,7 +49,8 @@ class MyAccountController extends Controller
                 return redirect()->back();
 
                 break;
-
+            
+            // DELETE IMAGE
             case $request->has('deleteUserImage'):
                 $id = auth()->id();
                 $user = User::find($id);

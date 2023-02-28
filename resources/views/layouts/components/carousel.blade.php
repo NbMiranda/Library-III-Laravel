@@ -1,6 +1,9 @@
+{{-- Title --}}
 <h2 class="red text-center" style="margin:1.1em 0 1.1em 0;">
     Ultimos livros
 </h2>
+
+{{-- Carousel bringing last 9 books --}}
 <section>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -143,18 +146,18 @@
 </section>
 
 <style>
-    .card {
+    /* .card {
             border: none;
             border-radius: 0;
             box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
             background-color: #ffffff00;
-        }
+        } */
 
-        .carousel-control-prev span,
-        .carousel-control-next span {
+        /* .carousel-control-prev span,
+        .carousel-control-next span { */
             /* width: 1.5rem;
             height: 1.5rem; */
-        }
+        /* }
         @media screen and (min-width: 577px) {
         .cards-wrapper {
             display: flex;
@@ -179,8 +182,8 @@
             max-width: 100%;
             max-height: 100%;
         }
-        .card-body{
+        .card-body{ */
             /* color: ; */
-            background-color: #ffffff00;
-        }
+            /* background-color: #ffffff00;
+        } */
 </style> 

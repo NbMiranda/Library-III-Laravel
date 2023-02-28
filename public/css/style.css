@@ -163,3 +163,249 @@ opacity: 1;
     justify-content: center;
     align-items: center;
 }
+
+/* Scroll Bar */
+::-webkit-scrollbar-track{
+    background-color: black;
+    }
+
+    ::-webkit-scrollbar{
+        width: 7px;
+        
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background: red;
+        border-radius: 15px;
+    }    
+
+/* User top image */
+#user_top_image{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:3em;
+    width:3em;
+    border-radius:50%;
+}
+
+/* Index carousel */
+
+.card {
+    border: none;
+    border-radius: 0;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    background-color: #ffffff00;
+}
+
+.carousel-control-prev span,
+.carousel-control-next span {
+    /* width: 1.5rem;
+    height: 1.5rem; */
+}
+@media screen and (min-width: 577px) {
+.cards-wrapper {
+    display: flex;
+    background-color: #ffffff00;
+}
+.card {
+    margin: 0 0.5em;
+    width: calc(100% / 2);
+}
+.image-wrapper {
+    height: 30vw;
+    margin: 0 auto;
+}
+}
+@media screen and (max-width: 576px) {
+.card:not(:first-child) {
+    display: none;
+}
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.card-body{
+    /* color: ; */
+    background-color: #ffffff00;
+}
+
+/* FOOTER */
+
+#footer{
+    background-color: black;
+}
+#footer_link{
+      text-decoration: none;
+      transition: .4s;
+      
+  }
+  #footer_link:hover{
+      color: red !important;
+      transition: .4s;
+      border-color: red;
+      background-color: black;
+  }
+
+  /* OOPS/NOT LOGGED PAGE */
+
+  #center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 92vh;
+    background-position:bottom;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-image:url('/imgs/redbackground.png');
+    /* background-image: url({{ URL::asset('/imgs/redbackground.png') }}) ; */    
+}
+#oops{
+    
+    height: 62vh;
+    width: 110vh;
+    border: 2px solid red;
+    background-color: #f5f5f5f8;
+    border-radius: 20px;
+}
+#oops h1{
+    color: red;
+    margin-top: .5em;
+}
+#oops p{
+    padding: 1.5em 7em 0 7em;
+    font-size: 1.3em;
+    font-weight: 450;
+    
+}
+#error_gif{
+    height: 18em;
+    margin-left: 39vh;
+    transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 704px) {
+    #error_gif {
+        height: 0;
+    }
+    #oops p{
+        padding: 5em 1em 2em 1em;
+    }
+}
+
+/* MyAccount style */
+
+#returnBtn{
+    width: 25vh;
+    height: 5vh;
+    color:red;
+    transition:.4s;
+}
+#returnBtn:hover{
+    background:none;
+    color: #c00000;
+    border-color: #c00000;
+    transition:.4s;
+}
+#userImage{
+    height: 40vh;
+    border: 3px solid red;
+    width: 40vh;
+    border-radius: 53%;
+    margin-top: 5vh;
+    margin-left: 9vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#user_data_image{
+    border-radius: 50%;
+    width: 20em;
+    height: 20em;
+    margin: 3em 0 1em 3.8em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#edit_btn{
+    width: 5em;
+    height: 5em;
+    
+    position: relative; 
+}
+#change_image{
+    position: absolute;
+    top: 37vh;
+    left: 32vh;
+    
+    border-radius: 20px;
+    background-color: #0000002b;
+    width: 1em;
+    width: 38px;
+    color: red;
+    transition: .4s;
+}
+#change_image:hover{
+    color: #b40101;
+    transition: .4s;
+
+}
+#rentLink{
+    position: relative;
+    top: 26.7vh;
+    left: 16vh;
+    border: none;
+    background-color:#00000012; 
+    border-radius: 20px;
+}
+
+/* UPDATE BOOKS PAGE */
+
+#rentBtn{
+    position: relative;
+    bottom: 14vh;
+}
+#bookCover{
+background-position: center;
+background-size: contain;
+background-repeat: no-repeat;
+width: 17.3em;
+height: 26em;
+margin: 1vh 0 0 12.5vh;
+border-radius: 10px;   
+}
+#change_cover{
+position: relative;
+top: 52vh;
+left: 34vh;
+
+border-radius: 20px;
+background-color: #0000002b;
+width: 1em;
+width: 38px;
+color: red;
+transition: .4s;
+}
+#change_cover:hover{
+color: #c00000;
+transition: .4s;
+}
+#book_cover_ub{
+height: 26em;
+width: 17.3em;
+
+background-position: center;
+background-size: contain;
+background-repeat: no-repeat;
+border-radius: 5px;
+margin-bottom: 4em;
+
+}
+
+#book_title, #writer_name, #writer_select_update, #genres{
+    margin-bottom: 1.2em;
+}

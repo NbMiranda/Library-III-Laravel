@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
+    // returning last 9 books on db
     public function index(){
         $books = DB::table('books')
                     ->latest('created_at')

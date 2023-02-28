@@ -13,24 +13,25 @@ class BookController extends Controller
         $this->middleware('validation');
     }
     public function books(){
+
+        // send all the writers and books to view
         $writers = Writer::all();
 
-        
         $books = DB::table('books')
         ->join('writers', 'books.writer_id', '=', 'writers.id')
         ->select('books.id', 'book_name', 'book_cover', 'genre', 'writer_name')
         ->orderBy('book_name')->get();
         
 
-
-
         return view('books', compact('writers', 'books'));
     }
+    
     public function crud(Request $request) {
         $id = $request->input('id');
 
+        // CREATE
         if($request->has('book_create')){
-            // dd($request->all());
+            
             $book = new Book;
             $book->book_name = $request->input('book_name');
             $book->writer_id = $request->input('writer_id');
@@ -45,35 +46,32 @@ class BookController extends Controller
             return redirect()->back();
 
         }
+
+        // UPDATE
         else if($request->has('book_update')){
             // dd($request->all());
             $book = Book::find($id);
             $book->update($request->all());
             session()->flash('book_success', 'Livro atualizado com sucesso');
         }
+
+        // DELETE
         else if($request->has('delete_book')){
 
             $id = $request->input('delete_book');
             
             $book = Book::find($id);
 
-            if($book->status == "rented") {
-                session()->flash('book_fail', 'Livro não pode ser deletado porque está alugado,
-                devolva o livro para deleta-lo');
-                return redirect()->back();
-            }
-            else{
-                $book->forceDelete();
+            $book->forceDelete();
 
-                session()->flash('book_success', 'Livro deletado com sucesso');
-                return redirect()->route('books');
-            }
-            
-                
+            session()->flash('book_success', 'Livro deletado com sucesso');
+            return redirect()->route('books');                
         }
+
+        // ADD A BOOK COVER
         else if($request->has('addBookCover')){
             $requestImage = $request->file('EditFile');
-            // $id = $request->input('id');
+            
             // Criando nome unico para a imagem
             $extension = $requestImage->extension();
             $imageName = $requestImage->getClientOriginalName() . strtotime("now") . "." . $extension;
@@ -88,6 +86,8 @@ class BookController extends Controller
             $book->save();
             return redirect()->back();
         }
+        
+        // DELETE BOOK COVER
         else if($request->has('deleteBookCover')){
             $book = Book::find($id);
             $book->update(['book_cover' => 'imagemPadrao.png']);

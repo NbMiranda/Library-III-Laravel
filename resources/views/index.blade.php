@@ -33,6 +33,7 @@
             </div>
         </div>
         
+        {{-- Checking if have 9 books on db --}}
         @if ($books->count() == 9)
             @include('layouts.components.carousel')            
         @endif
