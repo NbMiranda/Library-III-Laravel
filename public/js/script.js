@@ -144,7 +144,7 @@ async function save_data(id){
     };
     console.log(dataForm);
 
-    await fetch("/writers", {
+    await fetch("/writerUpdate", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

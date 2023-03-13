@@ -76,7 +76,7 @@
                     {{ $row->book_name }}
                     
                     {{-- Edit button --}}
-                    <a class="btn btn-outlinre-dark" href="{{route("updateBook", ['id' => $row->id])}}" >
+                    <a class="btn btn-outlinre-dark" href="{{route("showBook", ['id' => $row->id])}}" >
                         <i class="fa-solid fa-pen" style="font-size: 20px;"></i>                        
                     </a>
                 </h4>

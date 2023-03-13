@@ -17,9 +17,8 @@ class BookController extends Controller
         // send all the writers and books to view
         $writers = Writer::all();
 
-        $books = DB::table('books')
+        $books = Book::select('books.id', 'book_name', 'book_cover', 'genre', 'writer_name')
         ->join('writers', 'books.writer_id', '=', 'writers.id')
-        ->select('books.id', 'book_name', 'book_cover', 'genre', 'writer_name')
         ->orderBy('book_name')->get();
         
 

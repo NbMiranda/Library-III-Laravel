@@ -8,8 +8,7 @@ class WriterController extends Controller
 {
     // login validation
     public function __construct(){
-        $this->middleware('validation');
-        
+        $this->middleware('validation'); 
     }
 
     // writers select with pagination
@@ -24,36 +23,26 @@ class WriterController extends Controller
         return view('writers', compact('result', 'arrayId', 'firstItem', 'count'));
     }
 
-    // CRUD writers
-    public function crud(Request $request){
+    // CREATE Writer
+    public function create(Request $request) {
+
+        Writer::create($request->all());
+        return redirect()->back();
+    }
+
+    // UPDATE Writer
+    public function update(Request $request) {
+        $id = $request->input('id');
+        $writer = Writer::findOrFail($id);
+        $writer->update($request->all());
+    }
+
+    // DELETE Writer
+    public function delete(Request $request) {
+        $id = $request->input('writer_delete');
         
-        // DELETE WRITER
-        if($request->has('writer_delete')){
-            $id = $request->input('writer_delete');
-            
-            $writer = Writer::find($id);
-            $writer->delete();
-            return redirect()->back();
-                
-        }
-
-        // CREATE WRITER
-        else if($request->has('writer_create')){
-            // dd($request->all());
-            $writer = new Writer;
-            $writer->writer_name = $request->input('writer_name');
-            $writer->save();
-            return redirect()->back();
-            
-        }
-
-        // UPDATE WRITER
-        else if($request->has('writer_update')){
-            
-            $id = $request->input('id');
-            $writer = Writer::findOrFail($id);
-            $writer->update($request->all());
-        }
-                              
+        $writer = Writer::find($id);
+        $writer->delete();
+        return redirect()->back();
     }
 }

@@ -19,7 +19,7 @@
         </thead>
         <tbody>
             <tr>
-                <form action="{{route('writers')}}" method="post">
+                <form action="{{route('writerCreate')}}" method="post">
                     @csrf
                     <td>
                         
@@ -50,13 +50,16 @@
                 </td>
             </tr>
 
-            <form action="{{route('writers')}}" method="post">
-                @csrf
+            
                 @php $i = $result->firstItem(); @endphp
                 @foreach ($result as $row)
                     @php $id = $row->id; @endphp
                     {{-- <tbody> --}}
                         <tr style="height: 3.5em;">
+
+                            <form action="{{route('writerUpdate')}}" method="post">
+                                @csrf
+
                             <th scope="row" style="width: 7.1em;">{{ $i }}</th>
                             <td id="writerName{{$id}}" style="width: 41.5em;"> {{ $row->writer_name }}</td>
                             <td class="text-center">
@@ -74,7 +77,11 @@
 
                                 </button>
                             </td>
+                            </form>
                             
+                            {{-- Delete Form --}}
+                            <form action="{{route('writerDelete')}}" method="post">
+                                @csrf
                             <td>
                     
                                 {{-- Delete Btn --}}
@@ -91,11 +98,12 @@
                                     <i class="fa-sharp fa-solid fa-xmark" id="icons"></i>
                                 </button>
                             </td>
+                            </form>
                         </tr>
                     {{-- </tbody> --}}
                     @php $i++ @endphp
                 @endforeach                
-            </form>
+            
         </tbody>
         
 

@@ -16,4 +16,13 @@ class Rental extends Model
         'expires_in',
         'rented_book'
     ];
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

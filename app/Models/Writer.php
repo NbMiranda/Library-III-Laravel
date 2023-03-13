@@ -12,4 +12,7 @@ class Writer extends Model
     use HasFactory;
     protected $fillable = ['writer_name'];
 
+    public function book() {
+        return $this->hasMany('App\Models\Book');
+    }
 }

@@ -29,7 +29,7 @@
                 {{-- Book cover --}}
                 <div id='book_cover' style='background-image: url({{ URL::asset('/imgs/book_covers/'.$row->book_cover) }});'>
                     {{-- rent button --}}
-                    <a class="btn btn-outlinre-dark" href="{{route("updateBook", ['id' => $row->id])}}" id="rentLink">
+                    <a class="btn btn-outlinre-dark" href="{{route("showBook", ['id' => $row->id])}}" id="rentLink">
                         <i class="bi bi-arrow-left-right" id="links" style="font-size: 20px;"></i>                        
                     </a>
                 </div>

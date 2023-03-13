@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
+    public function books() {
+        return $this->belongsToMany(Book::class, 'rentals');
+    }
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

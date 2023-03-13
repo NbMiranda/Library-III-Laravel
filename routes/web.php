@@ -24,12 +24,15 @@ Route::get('/oops', function(){return view('layouts.components.oops');})->name('
 Route::get('/books', [\App\Http\Controllers\BookController::class, 'books'])->name('books');
 Route::post('/books', [\App\Http\Controllers\BookController::class, 'crud'])->name('books');
 
-// Update Book
-Route::get('/updateBook/{id}', [\App\Http\Controllers\updateBookController::class, 'updateBook'])->name('updateBook');
-Route::post('/updateBook/{id}', [\App\Http\Controllers\updateBookController::class, 'updateBook'])->name('updateBook');
+// Show Book
+Route::get('/showBook/{id}', [\App\Http\Controllers\showBookController::class, 'showBook'])->name('showBook');
+Route::post('/showBook/{id}', [\App\Http\Controllers\showBookController::class, 'showBook'])->name('showBook');
 
 //Writers CRUD
 Route::get('/writers', [\App\Http\Controllers\WriterController::class, 'writers'])->name('writers');
+Route::post('/writerCreate', [\App\Http\Controllers\WriterController::class, 'create'])->name('writerCreate');
+Route::post('/writerUpdate', [\App\Http\Controllers\WriterController::class, 'update'])->name('writerUpdate');
+Route::post('/writerDelete', [\App\Http\Controllers\WriterController::class, 'delete'])->name('writerDelete');
 Route::post('/writers', [\App\Http\Controllers\WriterController::class, 'crud'])->name('writers');
 
 //Contatos
