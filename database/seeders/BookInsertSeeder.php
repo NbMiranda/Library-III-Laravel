@@ -16,10 +16,17 @@ class BookInsertSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        // root user
+        DB::table('users')->insert([
+            'name' => 'Leader',
+            'email' => 'root@root',
+            'user_image' => 'redperson.png',
+            'password' => bcrypt('rootroot')
+        ]);
         
 
-        //atenção ao atributo fillable da classe
+        // Insert on writers table
         Writer::create( ['writer_name' => 'Rick Riordan']);
         Writer::create( ['writer_name' => 'J. K. Rowling']);
         Writer::create( ['writer_name' => 'John Green']);
