@@ -54,7 +54,7 @@
                                 
                                 <td>
                                     {{-- return a book form --}}
-                                    <form action="{{route('rentals')}}" method="post">
+                                    <form action="{{route('returnBook')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="id" value="{{$books[$i]->id}}">
                                         

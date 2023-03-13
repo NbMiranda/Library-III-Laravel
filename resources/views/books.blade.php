@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class='col-lg-3 col-md-6 col-sm-12' id='book-content'>
-            <form action="{{ route('books') }}" method="post">
+            <form action="{{ route('bookCreate') }}" method="post">
                 @csrf
                 {{-- Book Title --}}
                 <h4 class='red text-center' style='height:2.3em; margin-top: 1em; display:block;' id='book_add_title'>
@@ -65,6 +65,16 @@
                 <p class='container text-center' id="genre"><b>Generos:</b> Generos</p>
                 <input type='text' name="genre" id="genre_input" class='form-control' style="display:none;" 
                 placeholder="Digite um ou mais generôs do livro" required>
+                
+                <input type="hidden" name="synopsis" value="Adicione uma sinopse ao seu livro">
+                <input type="hidden" name="book_cover" value="imagemPadrao.png">
+                <input type="hidden" name="status" value="rentable">
+
+                @php
+                    $synopsis = "Adicione uma sinopse ao seu livro";
+                    $book_cover = "imagemPadrao.png";
+                    $status = "rentable";
+                @endphp
             </form>
         </div> 
             

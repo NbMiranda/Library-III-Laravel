@@ -366,8 +366,7 @@ opacity: 1;
 /* UPDATE BOOKS PAGE */
 
 #rentBtn{
-    position: relative;
-    bottom: 14vh;
+    width: 23vh; 
 }
 #bookCover{
 background-position: center;
@@ -408,4 +407,10 @@ margin-bottom: 4em;
 
 #book_title, #writer_name, #writer_select_update, #genres{
     margin-bottom: 1.2em;
+}
+
+#no_space{
+    display: inline-block;
+    width: 0;
+    padding: 0;
 }

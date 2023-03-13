@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Models\Writer;
 use \App\Models\Book;
-use Illuminate\Support\Facades\DB;
+
 
 class BookController extends Controller
 {
-    public function __construct(){
+    private $bookId;
+    public function __construct(Request $request){
         $this->middleware('validation');
+        $this->bookId = $request->input('id');
+        
     }
     public function books(){
 
@@ -24,75 +27,59 @@ class BookController extends Controller
 
         return view('books', compact('writers', 'books'));
     }
+
+    // CREATE Book
+    public function create(Request $request) {
     
-    public function crud(Request $request) {
-        $id = $request->input('id');
-
-        // CREATE
-        if($request->has('book_create')){
-            
-            $book = new Book;
-            $book->book_name = $request->input('book_name');
-            $book->writer_id = $request->input('writer_id');
-            $book->genre = $request->input('genre');
-            $book->book_cover = "imagemPadrao.png";
-            $book->synopsis = "Adicione uma sinopse ao seu livro ";
-            $book->status = "rentable";
-
-            $book->save();
-            session()->flash('book_success', 'Livro inserido com sucesso');
-            
-            return redirect()->back();
-
-        }
-
-        // UPDATE
-        else if($request->has('book_update')){
-            // dd($request->all());
-            $book = Book::find($id);
-            $book->update($request->all());
-            session()->flash('book_success', 'Livro atualizado com sucesso');
-        }
-
-        // DELETE
-        else if($request->has('delete_book')){
-
-            $id = $request->input('delete_book');
-            
-            $book = Book::find($id);
-
-            $book->forceDelete();
-
-            session()->flash('book_success', 'Livro deletado com sucesso');
-            return redirect()->route('books');                
-        }
-
-        // ADD A BOOK COVER
-        else if($request->has('addBookCover')){
-            $requestImage = $request->file('EditFile');
-            
-            // Criando nome unico para a imagem
-            $extension = $requestImage->extension();
-            $imageName = $requestImage->getClientOriginalName() . strtotime("now") . "." . $extension;
-    
-            // Movendo para pasta separa no projeto
-            $requestImage->move(public_path('imgs/book_covers'), $imageName); 
-            
-            // inserindo o nome no banco de dados
-            $book = Book::find($id);
-            
-            $book->book_cover = $imageName;
-            $book->save();
-            return redirect()->back();
-        }
+        Book::create($request->all());
+        session()->flash('book_success', 'Livro inserido com sucesso');
         
-        // DELETE BOOK COVER
-        else if($request->has('deleteBookCover')){
-            $book = Book::find($id);
-            $book->update(['book_cover' => 'imagemPadrao.png']);
-            return redirect()->back();
-        }
-
+        return redirect()->back();
     }
     
+    // UPDATE Book
+    public function update(Request $request) {
+
+        $book = Book::find($this->bookId);
+        $book->update($request->all());
+        session()->flash('book_success', 'Livro atualizado com sucesso');
+    }
+
+    // DELETE Book
+    public function delete() {
+            
+        $book = Book::find($this->bookId);
+        $book->forceDelete();
+
+        session()->flash('book_success', 'Livro deletado com sucesso');
+        return redirect()->route('books'); 
+    }
+    
+    // ADD Book Cover
+    public function addBookCover(Request $request) {
+        
+        $requestImage = $request->file('EditFile');
+            
+        // Criando nome unico para a imagem
+        $extension = $requestImage->extension();
+        $imageName = $requestImage->getClientOriginalName() . strtotime("now") . "." . $extension;
+    
+        // Movendo para pasta separa no projeto
+        $requestImage->move(public_path('imgs/book_covers'), $imageName); 
+        
+        // inserindo o nome no banco de dados
+        $book = Book::find($this->bookId);
+        
+        $book->book_cover = $imageName;
+        $book->save();
+        return redirect()->back();
+    }
+    
+    // DELETE Book Cover
+    public function delBookCover() {
+
+        $book = Book::find($this->bookId);
+        $book->update(['book_cover' => 'imagemPadrao.png']);
+        return redirect()->back();
+    } 
 }

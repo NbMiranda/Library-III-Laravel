@@ -332,7 +332,7 @@ async function updateBookData(id){
     };
     console.log(updateForm);
 
-    await fetch("/books", {
+    await fetch("/bookUpdate", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
